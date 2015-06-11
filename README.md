@@ -1,3 +1,5 @@
+Original Dartsnake readme starts here:
+
 Dartsnake Dart
 ==============
 
