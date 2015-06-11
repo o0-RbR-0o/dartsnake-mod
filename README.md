@@ -2,7 +2,7 @@ Dartsnake-mod
 ==============
 
 Dartsnake-mod (Project will later be called "Raumffisch") is a fork of Dartsnake by Nane Kratzke.
-It will feature a new game concept as well as some other game elements as part of a semester project for the "Webtechnologien" at the Fachhochschule Lübeck.
+It will feature a new game concept as well as some other game elements as part of a semester project for the class "Webtechnologien" at the Fachhochschule Lübeck.
 
 
 See attached original readme file for more information:
