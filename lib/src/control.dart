@@ -69,10 +69,24 @@ class SnakeGameController {
     window.onKeyDown.listen((KeyboardEvent ev) {
       if (game.stopped) return;
       switch (ev.keyCode) {
+        
+        //Ffisch nach links bewegen
         case KeyCode.LEFT:  game.snake.headLeft(); break;
+        //Ffisch nach recht bewegen
         case KeyCode.RIGHT: game.snake.headRight(); break;
+        //Ffisch nach oben bewegen
         case KeyCode.UP:    game.snake.headUp(); break;
+        //Ffisch nach unten bewegen
         case KeyCode.DOWN:  game.snake.headDown(); break;
+        //Feuern
+        case KeyCode.SPACE: /**/ break;
+        //Spiel anhalten
+        case KeyCode.PAUSE: /**/ break;
+        //PowerUp benutzen
+        case KeyCode.ALT: /**/ break;
+        
+        
+        
       }
     });
   }
