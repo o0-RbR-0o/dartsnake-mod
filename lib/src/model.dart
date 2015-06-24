@@ -1,5 +1,61 @@
 part of dartsnake;
 
+
+
+class Ffisch{
+  final SnakeGame _game;
+  int _powerups;
+  int _lifes;
+  int _position_x;
+  int _position_y;
+  
+  Ffisch.on(this._game){
+    
+  }
+  
+  void moveleft(){
+    this._position_x--;
+  }
+  
+  void moveright(){
+      this._position_x++;
+  }
+  
+  void moveup(){
+      this._position_y--;
+  }
+  
+  void movedown(){
+      this._position_y++;
+  }
+  
+  void addlifes(int anzahl){
+    this._lifes+=anzahl;
+  }
+  
+  void removelifes(int anzahl){
+    this._lifes-=anzahl;
+  }
+  
+  void setlifes(int anzahl){
+    this._lifes=anzahl;
+  }
+  
+  void addpowerups(int anzahl){
+    this._powerups+=anzahl;
+  }
+  
+  void removepowerups(int anzahl){
+    this._powerups-=anzahl;
+  }
+  
+  void setpowerups(int anzahl){
+    this._powerups=anzahl;
+  }
+  
+}
+
+
 /**
  * Defines a [Snake] of the [SnakeGame].
  * A [Snake] has a body (a list of continous body elements).
