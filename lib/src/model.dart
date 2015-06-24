@@ -14,6 +14,18 @@ class Movable_Object{
       //Todo: Fill constructor.
   }
   
+  //Detects collision with another Movable_Object. Todo: Changes positions to bounding boxes.
+  boolean detectCollisonWith(Movable_Object o){
+    boolean xcol=0, ycol=0;
+    if(this.position_x == o.position_x){
+      xcol=true;
+    }
+    if(this.position_y == o.position_y){
+      ycol=true;
+    }
+    return xcol&&ycol;
+  }
+  
   //Moves the Ffisch left 1px;
   void moveleft(){
     this._position_x--;
@@ -102,7 +114,7 @@ class Ffisch extends Movable_Object{
     this._powerups=anzahl;
   }
 }
-
+  
 
 /*------------------------End new stuff-----------------------------------------------------*/
 
