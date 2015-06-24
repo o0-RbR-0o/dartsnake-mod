@@ -10,17 +10,17 @@ class Movable_Object{
   int _sizex;
   int _sizey;
   
-  Ffisch.on(this._game){
-      //Todo: Fill constructor.
+  Movable_Object.on(this._game){
+
   }
   
   //Detects collision with another Movable_Object. Todo: Changes positions to bounding boxes.
-  boolean detectCollisonWith(Movable_Object o){
-    boolean xcol=0, ycol=0;
-    if(this.position_x == o.position_x){
+  bool detectCollisonWith(Movable_Object o){
+    bool xcol=false, ycol=false;
+    if(this._position_x == o._position_x){
       xcol=true;
     }
-    if(this.position_y == o.position_y){
+    if(this._position_y == o._position_y){
       ycol=true;
     }
     return xcol&&ycol;
@@ -73,15 +73,13 @@ class Movable_Object{
   
 }
 
-
 //Class for the player Ffisch extends Movable_Object. Would be cool to change positioning stuff to use vectors...
 class Ffisch extends Movable_Object{
   int _powerups;
   int _lifes;
   
-  Ffisch.on(this._game){
-    super.on(this._game);
-    //Todo: Fill constructor.
+  Ffisch.on() : super.on(super._game){
+
   }
   
   //Adds "anzahl" lifes to the Ffisch
