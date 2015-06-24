@@ -1,60 +1,110 @@
 part of dartsnake;
 
+/*----------------------------New stuff-----------------------------------------------------*/
 
-
-class Ffisch{
+//A class for movable objects.
+class Movable_Object{
   final SnakeGame _game;
-  int _powerups;
-  int _lifes;
   int _position_x;
   int _position_y;
+  int _sizex;
+  int _sizey;
   
   Ffisch.on(this._game){
-    
+      //Todo: Fill constructor.
   }
   
+  //Moves the Ffisch left 1px;
   void moveleft(){
     this._position_x--;
   }
   
+  //Moves the Ffisch right 1px;
   void moveright(){
       this._position_x++;
   }
   
+  //Moves the Ffisch up 1px;
   void moveup(){
       this._position_y--;
   }
-  
+  //Moves the Ffisch down 1px;
   void movedown(){
       this._position_y++;
   }
   
-  void addlifes(int anzahl){
-    this._lifes+=anzahl;
+  //Gets X-Position of the Ffisch
+  int getposition_x(){
+    return this._position_x;
   }
   
-  void removelifes(int anzahl){
-    this._lifes-=anzahl;
+  //Gets Y-Position of the Ffisch
+  int getposition_y(){
+    return this._position_y;
   }
   
-  void setlifes(int anzahl){
-    this._lifes=anzahl;
+  //Sets X,Y-Position of the Ffisch
+  void setposition(int x,int y){
+    this._position_x=x;
+    this._position_y=y;
   }
   
-  void addpowerups(int anzahl){
-    this._powerups+=anzahl;
+  //Gets the length of the Ffisch (For collision detection)
+  int getsize_x(){
+    return this._sizex;
   }
   
-  void removepowerups(int anzahl){
-    this._powerups-=anzahl;
-  }
-  
-  void setpowerups(int anzahl){
-    this._powerups=anzahl;
+  //Gets the height of the Ffisch (For collision detection)
+  int getsize_y(){
+      return this._sizey;
   }
   
 }
 
+
+//Class for the player Ffisch extends Movable_Object. Would be cool to change positioning stuff to use vectors...
+class Ffisch extends Movable_Object{
+  int _powerups;
+  int _lifes;
+  
+  Ffisch.on(this._game){
+    super.on(this._game);
+    //Todo: Fill constructor.
+  }
+  
+  //Adds "anzahl" lifes to the Ffisch
+  void addlifes(int anzahl){
+    this._lifes+=anzahl;
+  }
+  
+  //Removes "anzahl" lifes from the Ffisch
+  void removelifes(int anzahl){
+    this._lifes-=anzahl;
+  }
+  
+  //Sets the amount of lifes for the Ffisch
+  void setlifes(int anzahl){
+    this._lifes=anzahl;
+  }
+  
+  //Adds "anzahl" powerups to the Ffisch
+  void addpowerups(int anzahl){
+    this._powerups+=anzahl;
+  }
+  
+  //Removes "anzahl" powerups from the Ffisch
+  void removepowerups(int anzahl){
+    this._powerups-=anzahl;
+  }
+  
+  //Sets the amounts of powerups for the Ffisch
+  void setpowerups(int anzahl){
+    this._powerups=anzahl;
+  }
+}
+
+
+/*------------------------End new stuff-----------------------------------------------------*/
 
 /**
  * Defines a [Snake] of the [SnakeGame].
