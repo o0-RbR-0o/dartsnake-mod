@@ -2,6 +2,22 @@ part of dartsnake;
 
 /*----------------------------New stuff-----------------------------------------------------*/
 
+//A class for levels
+class Level{
+  int speed;
+  int enemy_frequency;
+  
+  Level(){
+    
+  }
+  
+  void loadFromFile(String f){
+    //File ff=new File(f);
+    
+  }
+  
+}
+
 //A class for movable objects.
 class Movable_Object{
   final RaumffischGame _game;
@@ -14,18 +30,14 @@ class Movable_Object{
 
   }
   
-  //Detects collision with another Movable_Object. Todo: Changes positions to bounding boxes.
+  //Detects collision with another Movable_Object with bounding boxes in size of the object. Returns true in case of collision.
   bool detectCollisonWith(Movable_Object o){
-    bool xcol=false, ycol=false;
-    if(this._position_x == o._position_x){
-      xcol=true;
-    }
-    if(this._position_y == o._position_y){
-      ycol=true;
-    }
-    return xcol&&ycol;
+    return  ( this._position_x < o._position_x + o._sizex     &&
+              this._position_x + this._sizex > o._position_x  &&
+              this._position_y < o._position_y + o._sizey     &&
+              this._sizey + this._position_y > o._position_y
+            );
   }
-  
   //Moves the Ffisch left 1px;
   void moveleft(){
     this._position_x--;

@@ -9,3 +9,4 @@ part 'src/control.dart';
 part 'src/view.dart';
 
 const gamesize = 30;
+
