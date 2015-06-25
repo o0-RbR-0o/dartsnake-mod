@@ -204,19 +204,11 @@ class Snake {
     final newrow = head['row'] + _dr;
     final newcol = head['col'] + _dc;
 
-    // Check if mice are present on next field
-    final mice = _game.mice.where((m) => m.row == newrow && m.col == newcol);
+
 
     _body.insert(0, { 'row' : newrow, 'col' : newcol });
 
-    if (mice.isEmpty)
-      _body.remove(tail);
-    else {
-      // if so, eat the first one
-      _game.mice.removeAt(0);
-      _game.increaseMiceCounter(1);
-      _game.addMouse();
-    }
+
   }
 
   /**
@@ -375,6 +367,7 @@ class RaumffischGame {
   // The gamestate of the game (one of #running, #stopped).
   Symbol _gamestate;
 
+  int get miceCounter => 1;
   /**
    * Indicates whether game is stopped.
    */
@@ -411,12 +404,12 @@ class RaumffischGame {
    * Returns whether the game is over.
    * Game is over, when snake has left the field or is tangled.
    */
-  //bool get gameOver => snake.notOnField || snake.tangled;
+  bool get gameOver => false;
 
   /**
    * Returns the snake.
    */
-  Ffisch get ffish => _ffisch;
+  Ffisch get ffisch => _ffisch;
 
   /**
    * Returns a list of mice.
@@ -429,17 +422,24 @@ class RaumffischGame {
    * #empty, #mouse or #snake
    */
   List<List<Symbol>> get field {
+
     var _field = new Iterable.generate(_size, (row) {
       return new Iterable.generate(_size, (col) => #empty).toList();
     }).toList();
-    mice.forEach((m) => _field[m.row][m.col] = #mouse);
-    snake.body.forEach((s) {
-      final r = s['row'];
-      final c = s['col'];
-      if (r < 0 || r >= _size) return;
-      if (c < 0 || c >= _size) return;
-      _field[r][c] = #snake;
+    protectlings.forEach((p){
+        for(int i=0;i<p._sizex;i++){
+          for(int j=0;j<p._sizey;j++){
+            _field[p._position_x+i][p._position_y+j] = #protectling;
+          }
+        }      
     });
+   
+    
+    for(int i=0;i<ffisch._sizex;i++){
+      for(int j=0;j<ffisch._sizey;j++){
+        _field[ffisch._position_x+i][ffisch._position_y+j] = #ffisch;
+      }
+    }
     return _field;
   }
 
@@ -451,14 +451,14 @@ class RaumffischGame {
    * [headRight] state.
    * Operation is only executed if game state is [running].
    */
-  //void moveSnake() { if (running) snake.move(); }
+  void moveSnake() { if (running); }
 
   /**
    * Moves each [Mouse] of the mice list according to their internal
    * movement direction.
    * Operation is only executed if game state is [running].
    */
-  //void moveMice() { if (running) mice.forEach((m) => m.move()); }
+  void moveMice() {/* if (running) mice.forEach((m) => m.move()); */ }
 
   /**
    * Adds a new [Mouse] to the game.

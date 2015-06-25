@@ -86,7 +86,12 @@ body {
   border-radius: 10px;
 }
 
-.snake {
+.ffisch {
   background-color: rgba(255, 255, 255, 0.75) !important;
+  border-radius: 10px;
+}
+
+.protectling {
+  background-color: blue !important;
   border-radius: 10px;
 }

@@ -61,14 +61,14 @@ class SnakeView {
     welcome.style.display = model.stopped ? "block" : "none";
     // title.style.display = model.stopped? "block" : "none";
 
-    points.innerHtml = "Points: ${model.miceCounter}";
-    gameover.innerHtml = model.gameOver ? "Game Over" : "";
+    //points.innerHtml = "Points: ${model.miceCounter}";
+    //gameover.innerHtml = model.gameOver ? "Game Over" : "";
     reasons.innerHtml = "";
-    if (model.gameOver) {
-      final tangled = model.snake.tangled ? "Do not tangle your snake<br>" : "";
-      final onfield = model.snake.notOnField ? "Keep your snake on the field<br>" : "";
-      reasons.innerHtml = "$tangled$onfield";
-    }
+    //if (model.gameOver) {
+    //  final tangled = model.snake.tangled ? "Do not tangle your snake<br>" : "";
+    //  final onfield = model.snake.notOnField ? "Keep your snake on the field<br>" : "";
+    //  reasons.innerHtml = "$tangled$onfield";
+    //}
 
     // Updates the field
     final field = model.field;
@@ -77,8 +77,8 @@ class SnakeView {
         final td = game.querySelector("#field_${row}_${col}");
         if (td != null) {
           td.classes.clear();
-          if (field[row][col]== #mouse) td.classes.add('mouse');
-          else if (field[row][col] == #snake) td.classes.add('snake');
+          if (field[row][col]== #protectling) td.classes.add('protectling');
+          else if (field[row][col] == #ffisch) td.classes.add('ffisch');
           else if (field[row][col] == #empty) td.classes.add('empty');
         }
       }
