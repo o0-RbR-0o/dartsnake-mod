@@ -4,7 +4,7 @@ part of dartsnake;
 
 //A class for movable objects.
 class Movable_Object{
-  final SnakeGame _game;
+  final RaumffischGame _game;
   int _position_x;
   int _position_y;
   int _sizex;
@@ -72,14 +72,43 @@ class Movable_Object{
   }
   
 }
+//Class for projectiles extends Movable_Object. 
+class Projectile extends Movable_Object{
+  int _sizex = 1;
+  int _sizey = 1;
+  Projectile.on() : super.on(super._game){
+
+  }
+  
+}
+
+class Enemy extends Movable_Object{
+  int _sizex = 3;
+  int _sizey = 3;
+  Enemy.on() : super.on(super._game){
+    
+  }
+}
+
+class Protectling extends Movable_Object{
+  int _sizex = 2;
+  int _sizey = 1;
+  Protectling.on() : super.on(super._game){
+    
+  }
+}
 
 //Class for the player Ffisch extends Movable_Object. Would be cool to change positioning stuff to use vectors...
 class Ffisch extends Movable_Object{
   int _powerups;
   int _lifes;
-  
-  Ffisch.on() : super.on(super._game){
-
+  int _sizex = 3;
+  int _sizey = 2;
+  Ffisch.on(_game):super.on(_game){
+    
+    final s = _game.size;
+     this._position_y =  s ~/2;
+     this._position_x = 2;
   }
   
   //Adds "anzahl" lifes to the Ffisch
@@ -117,9 +146,9 @@ class Ffisch extends Movable_Object{
 /*------------------------End new stuff-----------------------------------------------------*/
 
 /**
- * Defines a [Snake] of the [SnakeGame].
+ * Defines a [Snake] of the [RaumffischGame].
  * A [Snake] has a body (a list of continous body elements).
- * Each body element has a position (row, column) on the [SnakeGame] field.
+ * Each body element has a position (row, column) on the [RaumffischGame] field.
  * A [Snake] has a movement direction (up, down, left, right).
  */
 class Snake {
@@ -127,7 +156,7 @@ class Snake {
   /**
    * References the game.
    */
-  final SnakeGame _game;
+  final RaumffischGame _game;
 
   /**
    * List of body elements of this snake.
@@ -145,12 +174,12 @@ class Snake {
   int _dc;
 
   /**
-   * Constructor to create a [Snake] object for a [SnakeGame].
+   * Constructor to create a [Snake] object for a [RaumffischGame].
    * Created snake has a body of two elements length.
-   * Snake is positioned in the middle of [SnakeGame] field.
+   * Snake is positioned in the middle of [RaumffischGame] field.
    * Snake is created with upward movement.
    */
-  Snake.on(this._game) {
+  Snake(this._game) {
     final s = _game.size;
     _body = [
       { 'row' : s ~/ 2,     'col' : s ~/ 2 },
@@ -164,7 +193,7 @@ class Snake {
    * of this snake.
    * A [Snake] may eat a [Mouse] while this operation
    * if a [Mouse] object is on the field
-   * a snake is moving on. In this case the [Mouse] will be eaten (removed from [SnakeGame] state).
+   * a snake is moving on. In this case the [Mouse] will be eaten (removed from [RaumffischGame] state).
    * If there are more than one [Mouse] on this field only the first
    * [Mouse] will be eaten by the [Snake].
    * If a [Snake] eats a [Mouse] this snake gets one body element longer.
@@ -257,14 +286,14 @@ class Snake {
 }
 
 /**
- * Defines a [Mouse] of the [SnakeGame].
- * A [Mouse] has a position (row, column) on the [SnakeGame] field.
+ * Defines a [Mouse] of the [RaumffischGame].
+ * A [Mouse] has a position (row, column) on the [RaumffischGame] field.
  * And a [Mouse] might have a movement direction.
  */
 class Mouse {
 
   // Reference to a [SnakeGame].
-  final SnakeGame _game;
+  final RaumffischGame _game;
 
   // Row position of this mouse.
   int _row;
@@ -279,7 +308,7 @@ class Mouse {
   int _dc;
 
   /**
-   *  Constructor to create a non moving mouse for a [SnakeGame].
+   *  Constructor to create a non moving mouse for a [RaumffischGame].
    */
   Mouse.staticOn(this._game, this._row, this._col) {
     _dr = 0;
@@ -287,7 +316,7 @@ class Mouse {
   }
 
   /**
-   * Constructor to create a random moving mouse for a [SnakeGame].
+   * Constructor to create a random moving mouse for a [RaumffischGame].
    */
   Mouse.movingOn(this._game, this._row, this._col) {
     final r = new Random();
@@ -324,26 +353,27 @@ class Mouse {
 }
 
 /**
- * Defines a [SnakeGame]. A [SnakeGame] consists of n x n field.
+ * Defines a [RaumffischGame]. A [RaumffischGame] consists of n x n field.
  * On this field there moves a user controlled [Snake] of increasing length.
  * Aim of the [Snake] is to eat as many mice ([Mouse]) as possible.
  */
-class SnakeGame {
+class RaumffischGame {
 
   // The snake of the game.
-  Snake _snake;
+
+  Ffisch _ffisch;
 
   // List of mice.
-  var _mice = [];
+
+  
+  var _enemies = [];
+  var _protectlings = [];
 
   // The field size of the game (nxn field)
   final int _size;
 
   // The gamestate of the game (one of #running, #stopped).
   Symbol _gamestate;
-
-  // Holds how many mice the snake has already eaten.
-  var _miceCounter = 0;
 
   /**
    * Indicates whether game is stopped.
@@ -370,10 +400,10 @@ class SnakeGame {
    * - a centered snake heading up ([headUp])
    * - and one static random placed mouse on the field.
    */
-  SnakeGame(this._size) {
+  RaumffischGame(this._size) {
     start();
-    _snake = new Snake.on(this);
-    addMouse();
+
+    _ffisch = new Ffisch.on(this);
     stop();
   }
 
@@ -381,17 +411,17 @@ class SnakeGame {
    * Returns whether the game is over.
    * Game is over, when snake has left the field or is tangled.
    */
-  bool get gameOver => snake.notOnField || snake.tangled;
+  //bool get gameOver => snake.notOnField || snake.tangled;
 
   /**
    * Returns the snake.
    */
-  Snake get snake => _snake;
+  Ffisch get ffish => _ffisch;
 
   /**
    * Returns a list of mice.
    */
-  List<Mouse> get mice => _mice;
+  List<Protectling> get protectlings => _protectlings;
 
   /**
    * Returns the game field as a list of lists.
@@ -413,35 +443,27 @@ class SnakeGame {
     return _field;
   }
 
-  /**
-   * Increases the mice counter by the amount of [n].
-   * Operation is only executed if game state is [running].
-   */
-  void increaseMiceCounter(int n) { if (running) _miceCounter += n; }
 
-  /**
-   * Returns the how many mice has been eaten by this snake so far.
-   */
-  int get miceCounter => _miceCounter;
+
 
   /**
    * Moves the snake according to its internal [headUp], [headDown], [headLeft],
    * [headRight] state.
    * Operation is only executed if game state is [running].
    */
-  void moveSnake() { if (running) snake.move(); }
+  //void moveSnake() { if (running) snake.move(); }
 
   /**
    * Moves each [Mouse] of the mice list according to their internal
    * movement direction.
    * Operation is only executed if game state is [running].
    */
-  void moveMice() { if (running) mice.forEach((m) => m.move()); }
+  //void moveMice() { if (running) mice.forEach((m) => m.move()); }
 
   /**
    * Adds a new [Mouse] to the game.
    * Operation is not executed if game state is [stopped].
-   */
+   
   void addMouse() {
     if (stopped) return;
     Random r = new Random();
@@ -449,7 +471,7 @@ class SnakeGame {
     final col = r.nextInt(_size);
     _mice.add(new Mouse.staticOn(this, row, col));
   }
-
+*/
   /**
    * Returns the size of the game. The game is played on a nxn-field.
    */

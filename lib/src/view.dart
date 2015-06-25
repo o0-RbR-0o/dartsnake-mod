@@ -2,7 +2,7 @@ part of dartsnake;
 
 /**
  * A [SnakeView] object interacts with the DOM tree
- * to reflect actual [SnakeGame] state to the user.
+ * to reflect actual [RaumffischGame] state to the user.
  */
 class SnakeView {
 
@@ -20,7 +20,7 @@ class SnakeView {
 
   /**
    * Element with id '#snakegame' of the DOM tree.
-   * Used to visualize the field of a [SnakeGame] as a HTML table.
+   * Used to visualize the field of a [RaumffischGame] as a HTML table.
    */
   final game = querySelector('#snakegame');
 
@@ -56,7 +56,7 @@ class SnakeView {
    * - Game over [reasons] ([model.snake] tangled or off field) are shown when [model] is in game over state.
    * - Field is shown according to actual field state of [model].
    */
-  void update(SnakeGame model) {
+  void update(RaumffischGame model) {
 
     welcome.style.display = model.stopped ? "block" : "none";
     // title.style.display = model.stopped? "block" : "none";
@@ -90,7 +90,7 @@ class SnakeView {
    * A HTML table (n x n) is generated and inserted
    * into the [game] element of the DOM tree.
    */
-  void generateField(SnakeGame model) {
+  void generateField(RaumffischGame model) {
     final field = model.field;
     String table = "";
     for (int row = 0; row < field.length; row++) {

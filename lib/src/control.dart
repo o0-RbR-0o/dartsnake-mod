@@ -14,22 +14,22 @@ const miceSpeed = const Duration(milliseconds: 1000);
 
 /**
  * A [SnakeGameController] object registers several handlers
- * to grab interactions of a user with a [SnakeGame] and translate
- * them into valid [SnakeGame] actions.
+ * to grab interactions of a user with a [RaumffischGame] and translate
+ * them into valid [RaumffischGame] actions.
  *
  * Furthermore a [SnakeGameController] object triggers the
  * movements of a [Snake] object and (several) [Mouse] objects
- * of a [SnakeGame].
+ * of a [RaumffischGame].
  *
  * Necessary updates of the view are delegated to a [SnakeView] object
- * to inform the user about changing [SnakeGame] states.
+ * to inform the user about changing [RaumffischGame] states.
  */
 class SnakeGameController {
 
   /**
    * Referencing the to be controlled model.
    */
-  var game = new SnakeGame(gamesize);
+  var game = new RaumffischGame(gamesize);
 
   /**
    * Referencing the presenting view.
@@ -49,7 +49,7 @@ class SnakeGameController {
   /**
    * Constructor to create a controller object.
    * Registers all necessary event handlers necessary
-   * for the user to interact with a [SnakeGame].
+   * for the user to interact with a [RaumffischGame].
    */
   SnakeGameController() {
 
@@ -57,7 +57,7 @@ class SnakeGameController {
     view.startButton.onClick.listen((_) {
       if (snakeTrigger != null) snakeTrigger.cancel();
       if (miceTrigger != null) miceTrigger.cancel();
-      game = new SnakeGame(gamesize);
+      game = new RaumffischGame(gamesize);
       view.generateField(game);
       snakeTrigger = new Timer.periodic(snakeSpeed, (_) => _moveSnake());
       miceTrigger = new Timer.periodic(miceSpeed, (_) => _moveMice());
