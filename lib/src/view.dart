@@ -6,6 +6,8 @@ part of dartsnake;
  */
 class SnakeView {
 
+  List<List<Element>> gamefield = new List<List<Element>>();
+  
   /**
    * Element with id '#title' of the DOM tree.
    * Shown only if game is not running.
@@ -71,14 +73,18 @@ class SnakeView {
     //}
 
     // Updates the field
+    
+    
+    
     final field = model.field;
     for (int row = 0; row < field.length; row++) {
       for (int col = 0; col < field[row].length; col++) {
-        final td = game.querySelector("#field_${row}_${col}");
+        final td = gamefield[col][row];
         if (td != null) {
           td.classes.clear();
           if (field[row][col]== #protectling) td.classes.add('protectling');
           else if (field[row][col] == #ffisch) td.classes.add('ffisch');
+          else if (field[row][col] == #enemy) td.classes.add('enemy');
           else if (field[row][col] == #empty) td.classes.add('empty');
         }
       }
@@ -92,6 +98,7 @@ class SnakeView {
    */
   void generateField(RaumffischGame model) {
     final field = model.field;
+
     String table = "";
     for (int row = 0; row < field.length; row++) {
       table += "<tr>";
@@ -102,6 +109,15 @@ class SnakeView {
       }
       table += "</tr>";
     }
+
+    //print(gamefield);
     game.innerHtml = table;
+    for(int i = 0; i <gamesize;i++){
+      gamefield.add(new List<Element>());
+      for(int j= 0; j < gamesize; j++){
+        gamefield[i].add(game.querySelector("#field_${j}_${i}"));  
+        
+      }
+    }
   }
 }

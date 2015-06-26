@@ -11,7 +11,7 @@
   height: 100%;
   margin: 0px auto 0px auto;
   text-align: center;
-  padding: 0px 0px 100px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 h1 { 
@@ -69,15 +69,17 @@ a {
 body {
   background-image: url('img/background.jpg');
   background-position: center center;
+  margin: 0px;
+  padding: 0px;
 }
 
 #snakegame {
-  margin: 50px auto 50px auto;
+  margin: 5px auto 5px auto;
 }
 
 #snakegame td {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -93,5 +95,10 @@ body {
 
 .protectling {
   background-color: blue !important;
+  border-radius: 10px;
+}
+
+.enemy {
+  background-color: red !important;
   border-radius: 10px;
 }

@@ -2,9 +2,9 @@ part of dartsnake;
 
 /**
  * Constant to define the speed of a [Snake].
- * A [snakeSpeed] of 250ms means 4 movements per second.
+ * A [gameSpeed] of 250ms means 4 movements per second.
  */
-const snakeSpeed = const Duration(milliseconds: 250);
+const gameSpeed = const Duration(milliseconds: 2);
 
 /**
  * Constant to define the speed of a [Mouse].
@@ -29,7 +29,7 @@ class SnakeGameController {
   /**
    * Referencing the to be controlled model.
    */
-  var game = new RaumffischGame(gamesize);
+  RaumffischGame game;
 
   /**
    * Referencing the presenting view.
@@ -39,7 +39,7 @@ class SnakeGameController {
   /**
    * Periodic trigger controlling snake movement.
    */
-  Timer snakeTrigger;
+  Timer updateTrigger;
 
   /**
    * Periodic trigger controlling mice movement.
@@ -55,12 +55,14 @@ class SnakeGameController {
 
     // New game is started by user
     view.startButton.onClick.listen((_) {
-      if (snakeTrigger != null) snakeTrigger.cancel();
+      if (updateTrigger != null) updateTrigger.cancel();
       if (miceTrigger != null) miceTrigger.cancel();
       game = new RaumffischGame(gamesize);
       view.generateField(game);
-      snakeTrigger = new Timer.periodic(snakeSpeed, (_) => _moveSnake());
+      updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       miceTrigger = new Timer.periodic(miceSpeed, (_) => _moveMice());
+      
+    
       game.start();
       view.update(game);
     });
@@ -71,13 +73,13 @@ class SnakeGameController {
       switch (ev.keyCode) {
         
         //Ffisch nach links bewegen
-        case KeyCode.LEFT:  game.snake.headLeft(); break;
+        case KeyCode.LEFT:  game.ffisch.moveleft(); break;
         //Ffisch nach recht bewegen
-        case KeyCode.RIGHT: game.snake.headRight(); break;
+        case KeyCode.RIGHT: game.ffisch.moveright(); break;
         //Ffisch nach oben bewegen
-        case KeyCode.UP:    game.snake.headUp(); break;
+        case KeyCode.UP:    game.ffisch.moveup(); break;
         //Ffisch nach unten bewegen
-        case KeyCode.DOWN:  game.snake.headDown(); break;
+        case KeyCode.DOWN:  game.ffisch.movedown(); break;
         //Feuern
         case KeyCode.SPACE: /**/ break;
         //Spiel anhalten
@@ -103,10 +105,10 @@ class SnakeGameController {
   /**
    * Moves the snake.
    */
-  void _moveSnake() {
+  void _update() {
     if (game.gameOver) { game.stop(); view.update(game); return; }
     final mice = game.miceCounter;
-    game.moveSnake();
+    game.update();
     if (game.miceCounter > mice) { _increaseSnakeSpeed(); }
     if (game.gameOver) return;
     view.update(game);
@@ -116,8 +118,8 @@ class SnakeGameController {
    * Increases Snake speed by 1% for every eaten mouse.
    */
   void _increaseSnakeSpeed() {
-    snakeTrigger.cancel();
-    final newSpeed = snakeSpeed * pow(0.99, game.miceCounter);
-    snakeTrigger = new Timer.periodic(newSpeed, (_) => _moveSnake());
+    updateTrigger.cancel();
+    final newSpeed = gameSpeed * pow(0.99, game.miceCounter);
+    updateTrigger = new Timer.periodic(newSpeed, (_) => _update());
   }
 }

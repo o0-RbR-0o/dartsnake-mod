@@ -1,11 +1,63 @@
 part of dartsnake;
 
 /*----------------------------New stuff-----------------------------------------------------*/
+//Todo:
+//Beim Refactoring Generics statt Vererbung nutzen.
+//seed richtig holen
+class Generator{
+  RaumffischGame _game;
+  Random _random = new Random(872739419772238);
+  Level _level;
+  Generator(Level level, RaumffischGame game){
+    this._game = game;
+    this._level = level;
+  }
+}
+
+class EnemyGenerator extends Generator {
+  
+  List<Enemy> _enemies = new List<Enemy>();
+  
+  EnemyGenerator(Level level, RaumffischGame game) :super(level, game){
+    
+  }
+  void tick (){
+    _enemies.forEach((e){e.moveleft();});
+    if(_random.nextInt(_level.enemy_frequency)==0){
+      
+      Enemy enemy = new Enemy(_game);
+      enemy.setposition(60,_random.nextInt(60));
+      _enemies.add(enemy);
+     
+      
+      
+    }
+    _enemies.forEach((e){
+           if(e.detectCollisonWith(_game._ffisch)){
+             _game._gameOver = true;}
+           }); 
+  }
+  
+  
+}
+
+class ProtectlingGenerator extends Generator {
+  
+  List<Protectling> enemies = new List<Protectling>();
+   
+  ProtectlingGenerator(Level level,game) :super(level, game){
+     
+   }
+   
+   
+}
+
+
 
 //A class for levels
 class Level{
-  int speed;
-  int enemy_frequency;
+  int speed = 1;
+  int enemy_frequency = 40;
   
   Level(){
     
@@ -26,7 +78,7 @@ class Movable_Object{
   int _sizex;
   int _sizey;
   
-  Movable_Object.on(this._game){
+  Movable_Object(this._game){
 
   }
   
@@ -35,25 +87,29 @@ class Movable_Object{
     return  ( this._position_x < o._position_x + o._sizex     &&
               this._position_x + this._sizex > o._position_x  &&
               this._position_y < o._position_y + o._sizey     &&
-              this._sizey + this._position_y > o._position_y
+              this._sizey + this._position_y > o._position_y               
             );
   }
   //Moves the Ffisch left 1px;
   void moveleft(){
+    if(this._position_x>0)
     this._position_x--;
   }
   
   //Moves the Ffisch right 1px;
   void moveright(){
+      if(this._position_x < (this._game._size-this._sizex))
       this._position_x++;
   }
   
   //Moves the Ffisch up 1px;
   void moveup(){
+    if(this._position_y>0)
       this._position_y--;
   }
   //Moves the Ffisch down 1px;
   void movedown(){
+    if(this._position_y < (this._game._size-_sizey))
       this._position_y++;
   }
   
@@ -88,7 +144,7 @@ class Movable_Object{
 class Projectile extends Movable_Object{
   int _sizex = 1;
   int _sizey = 1;
-  Projectile.on() : super.on(super._game){
+  Projectile.on(_game) : super(_game){
 
   }
   
@@ -97,7 +153,7 @@ class Projectile extends Movable_Object{
 class Enemy extends Movable_Object{
   int _sizex = 3;
   int _sizey = 3;
-  Enemy.on() : super.on(super._game){
+  Enemy(_game) : super(_game){
     
   }
 }
@@ -105,7 +161,7 @@ class Enemy extends Movable_Object{
 class Protectling extends Movable_Object{
   int _sizex = 2;
   int _sizey = 1;
-  Protectling.on() : super.on(super._game){
+  Protectling.on(_game) : super(_game){
     
   }
 }
@@ -114,9 +170,9 @@ class Protectling extends Movable_Object{
 class Ffisch extends Movable_Object{
   int _powerups;
   int _lifes;
-  int _sizex = 3;
-  int _sizey = 2;
-  Ffisch.on(_game):super.on(_game){
+  int _sizex = 4;
+  int _sizey = 3;
+  Ffisch(_game):super(_game){
     
     final s = _game.size;
      this._position_y =  s ~/2;
@@ -155,206 +211,8 @@ class Ffisch extends Movable_Object{
 }
   
 
-/*------------------------End new stuff-----------------------------------------------------*/
-
-/**
- * Defines a [Snake] of the [RaumffischGame].
- * A [Snake] has a body (a list of continous body elements).
- * Each body element has a position (row, column) on the [RaumffischGame] field.
- * A [Snake] has a movement direction (up, down, left, right).
- */
-class Snake {
-
-  /**
-   * References the game.
-   */
-  final RaumffischGame _game;
-
-  /**
-   * List of body elements of this snake.
-   */
-  var _body = [];
-
-  /**
-   * Actual vertical row movement of this snake. Can be -1, 0, 1.
-   */
-  int _dr;
-
-  /**
-   * Horizontal vertical column movement of this snake. Can be -1, 0, 1.
-   */
-  int _dc;
-
-  /**
-   * Constructor to create a [Snake] object for a [RaumffischGame].
-   * Created snake has a body of two elements length.
-   * Snake is positioned in the middle of [RaumffischGame] field.
-   * Snake is created with upward movement.
-   */
-  Snake(this._game) {
-    final s = _game.size;
-    _body = [
-      { 'row' : s ~/ 2,     'col' : s ~/ 2 },
-      { 'row' : s ~/ 2 + 1, 'col' : s ~/ 2 }
-    ];
-    headUp();
-  }
-
-  /**
-   * Moves the snake according to the movement status (up, down, left, right)
-   * of this snake.
-   * A [Snake] may eat a [Mouse] while this operation
-   * if a [Mouse] object is on the field
-   * a snake is moving on. In this case the [Mouse] will be eaten (removed from [RaumffischGame] state).
-   * If there are more than one [Mouse] on this field only the first
-   * [Mouse] will be eaten by the [Snake].
-   * If a [Snake] eats a [Mouse] this snake gets one body element longer.
-   * If a [Mouse] is eaten by this [Snake] a new [Mouse] with random position is generated.
-   */
-  void move() {
-
-    final newrow = head['row'] + _dr;
-    final newcol = head['col'] + _dc;
 
 
-
-    _body.insert(0, { 'row' : newrow, 'col' : newcol });
-
-
-  }
-
-  /**
-   * Tells this snake to move upward for following [move]s.
-   */
-  void headUp()    { _dr = -1; _dc =  0; }
-
-  /**
-   * Tells this snake to move downward for following [move]s.
-   */
-  void headDown()  { _dr =  1; _dc =  0; }
-
-  /**
-   * Tells this snake to move left for following [move]s.
-   */
-  void headLeft()  { _dr =  0; _dc = -1; }
-
-  /**
-   * Tells this snake to move right for following [move]s.
-   */
-  void headRight() { _dr =  0; _dc =  1; }
-
-  /**
-   * Indicates whether this snake is tangled.
-   * A snake is tangled when two or more body elements of a snake share the
-   * same position on the field.
-   */
-  bool get tangled {
-    final tangledcheck = _body.map((s) => "${s['row']},${s['col']}").toSet();
-    return tangledcheck.length != length;
-  }
-
-  /**
-   * Indicates whether this snake is on field.
-   */
-  bool get onField {
-    return head['row'] >= 0 &&
-           head['row'] < _game.size &&
-           head['col'] >= 0 &&
-           head['col'] < _game.size;
-  }
-
-  /**
-   * Indicates wether this snake is not on the field.
-   */
-  bool get notOnField => !onField;
-
-  /**
-   * Returns the length of this snake (amount of body elements).
-   */
-  int get length => _body.length;
-
-  /**
-   * Returns the head of this snake (first element of body elements).
-   */
-  Map get head => _body.first;
-
-  /**
-   * Returns the tail of this snake (last element of body elements).
-   */
-  Map get tail => _body.last;
-
-  /**
-   * Returns the body of this snake as a list of body element position mappings.
-   */
-  List<Map<String, int>> get body => _body;
-}
-
-/**
- * Defines a [Mouse] of the [RaumffischGame].
- * A [Mouse] has a position (row, column) on the [RaumffischGame] field.
- * And a [Mouse] might have a movement direction.
- */
-class Mouse {
-
-  // Reference to a [SnakeGame].
-  final RaumffischGame _game;
-
-  // Row position of this mouse.
-  int _row;
-
-  // Column position of this mouse.
-  int _col;
-
-  // Row direction of this mouse (might be -1, 0, +1)
-  int _dr;
-
-  // Column direction of this mouse (might be -1, 0, +1)
-  int _dc;
-
-  /**
-   *  Constructor to create a non moving mouse for a [RaumffischGame].
-   */
-  Mouse.staticOn(this._game, this._row, this._col) {
-    _dr = 0;
-    _dc = 0;
-  }
-
-  /**
-   * Constructor to create a random moving mouse for a [RaumffischGame].
-   */
-  Mouse.movingOn(this._game, this._row, this._col) {
-    final r = new Random();
-    _dr = -1 + r.nextInt(2);
-    _dc = -1 + r.nextInt(2);
-  }
-
-  /**
-   * Returns the actual row of this mouse.
-   */
-  int get row => _row;
-
-  /**
-   * Returns the actual column of this mouse.
-   */
-  int get col => _col;
-
-  /**
-   * Returns the actual position of this mouse as a map with keys 'row' and 'col'.
-   */
-  Map<String, int> get pos => {'row' : _row, 'col' : _col };
-
-  /**
-   * Moves this mouse
-   */
-  void move() {
-    if (_dr < 0 && row == 0) _dr *= -1;
-    if (_dc < 0 && col == 0) _dc *= -1;
-    if (_dr > 0 && row == _game.size - 1) _dr *= -1;
-    if (_dc > 0 && col == _game.size - 1) _dr *= -1;
-    _row += _dr;
-    _col += _dc;
-  }
-}
 
 /**
  * Defines a [RaumffischGame]. A [RaumffischGame] consists of n x n field.
@@ -366,11 +224,13 @@ class RaumffischGame {
   // The snake of the game.
 
   Ffisch _ffisch;
+  
+  EnemyGenerator _enemyGenerator;
 
   // List of mice.
 
   
-  var _enemies = [];
+
   var _protectlings = [];
 
   // The field size of the game (nxn field)
@@ -408,7 +268,8 @@ class RaumffischGame {
   RaumffischGame(this._size) {
     start();
 
-    _ffisch = new Ffisch.on(this);
+    _ffisch = new Ffisch(this);
+    _enemyGenerator = new EnemyGenerator(new Level(), this);
     stop();
   }
 
@@ -416,8 +277,9 @@ class RaumffischGame {
    * Returns whether the game is over.
    * Game is over, when snake has left the field or is tangled.
    */
-  bool get gameOver => false;
-
+  bool get gameOver => _gameOver;
+  
+  bool _gameOver = false;
   /**
    * Returns the snake.
    */
@@ -439,17 +301,25 @@ class RaumffischGame {
       return new Iterable.generate(_size, (col) => #empty).toList();
     }).toList();
     protectlings.forEach((p){
-        for(int i=0;i<p._sizex;i++){
-          for(int j=0;j<p._sizey;j++){
-            _field[p._position_x+i][p._position_y+j] = #protectling;
+        for(int i=0;i<p._sizey;i++){
+          for(int j=0;j<p._sizex;j++){
+            _field[p._position_y+i][p._position_x+j] = #protectling;
+          }
+        }      
+    });
+    
+    _enemyGenerator._enemies.forEach((p){
+        for(int i=0;i<p._sizey;i++){
+          for(int j=0;j<p._sizex;j++){
+            _field[p._position_y+i][p._position_x+j] = #enemy;
           }
         }      
     });
    
     
-    for(int i=0;i<ffisch._sizex;i++){
-      for(int j=0;j<ffisch._sizey;j++){
-        _field[ffisch._position_x+i][ffisch._position_y+j] = #ffisch;
+    for(int i=0;i<ffisch._sizey;i++){
+      for(int j=0;j<ffisch._sizex;j++){
+        _field[ffisch._position_y+i][ffisch._position_x+j] = #ffisch;
       }
     }
     return _field;
@@ -463,7 +333,13 @@ class RaumffischGame {
    * [headRight] state.
    * Operation is only executed if game state is [running].
    */
-  void moveSnake() { if (running); }
+  void update() {
+    if (running){
+      _enemyGenerator.tick();
+    }
+  
+  
+  }
 
   /**
    * Moves each [Mouse] of the mice list according to their internal
