@@ -68,28 +68,36 @@ class SnakeGameController {
     });
 
     // Steering of the snake
+  
     window.onKeyDown.listen((KeyboardEvent ev) {
       if (game.stopped) return;
-      switch (ev.keyCode) {
         
+      
         //Ffisch nach links bewegen
-        case KeyCode.LEFT:  game.ffisch.moveleft(); break;
+        if(ev.keyCode==KeyCode.LEFT)
+          game.ffisch.moveleft();
         //Ffisch nach recht bewegen
-        case KeyCode.RIGHT: game.ffisch.moveright(); break;
+        if(ev.keyCode==KeyCode.RIGHT) 
+          game.ffisch.moveright();
         //Ffisch nach oben bewegen
-        case KeyCode.UP:    game.ffisch.moveup(); break;
+        if(ev.keyCode==KeyCode.UP)   
+          game.ffisch.moveup();
         //Ffisch nach unten bewegen
-        case KeyCode.DOWN:  game.ffisch.movedown(); break;
+        if(ev.keyCode==KeyCode.DOWN)  
+          game.ffisch.movedown(); 
         //Feuern
-        case KeyCode.SPACE: /**/ break;
+        if(ev.keyCode==KeyCode.SPACE) 
+          game.ffisch.shoot();/**/ 
         //Spiel anhalten
-        case KeyCode.PAUSE: /**/ break;
+        if(ev.keyCode== KeyCode.PAUSE);/**/ 
+       
         //PowerUp benutzen
-        case KeyCode.ALT: /**/ break;
+        if(ev.keyCode== KeyCode.ALT); /**/ 
+          
         
         
         
-      }
+      
     });
   }
 

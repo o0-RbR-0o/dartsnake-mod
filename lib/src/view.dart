@@ -19,6 +19,8 @@ class SnakeView {
    * Shown only if game is not running.
    */
   final welcome = querySelector("#welcome");
+  final score = querySelector("#score");
+
 
   /**
    * Element with id '#snakegame' of the DOM tree.
@@ -59,7 +61,9 @@ class SnakeView {
    * - Field is shown according to actual field state of [model].
    */
   void update(RaumffischGame model) {
-
+    
+    score.setInnerHtml(model._score.toString());
+    
     welcome.style.display = model.stopped ? "block" : "none";
     // title.style.display = model.stopped? "block" : "none";
 
@@ -85,6 +89,7 @@ class SnakeView {
           if (field[row][col]== #protectling) td.classes.add('protectling');
           else if (field[row][col] == #ffisch) td.classes.add('ffisch');
           else if (field[row][col] == #enemy) td.classes.add('enemy');
+          else if (field[row][col] == #projectile) td.classes.add('projectile');
           else if (field[row][col] == #empty) td.classes.add('empty');
         }
       }

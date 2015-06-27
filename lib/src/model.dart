@@ -22,20 +22,65 @@ class EnemyGenerator extends Generator {
     
   }
   void tick (){
-    _enemies.forEach((e){e.moveleft();});
+    if(_game.protectling.dead == true){
+      _game.protectling.setposition((gamesize-1)~/2, gamesize-1-_game.protectling._sizey);
+      _game.protectling.dead = false;
+    }
+    _game.protectling.move();
+    _enemies.forEach((e){
+      
+      e.moveleft();
+
+      
+    });
+    _game._ffisch.projectiles.forEach((p){p.moveright();p.moveright();});
     if(_random.nextInt(_level.enemy_frequency)==0){
       
-      Enemy enemy = new Enemy(_game);
+      
+      bool founddead=false;
+      _enemies.forEach((f){
+        if(f.dead && !founddead){
+          f.setposition(60,_random.nextInt(60));
+          f.dead=false;
+          founddead=true;
+          
+        }
+      });
+      if(!founddead){
+        Enemy enemy = new Enemy(_game);
+      
       enemy.setposition(60,_random.nextInt(60));
-      _enemies.add(enemy);
-     
+          _enemies.add(enemy);
+      }
       
       
     }
     _enemies.forEach((e){
-           if(e.detectCollisonWith(_game._ffisch)){
+           if(e.detectCollisonWith(_game._ffisch) && !e.dead){
              _game._gameOver = true;}
+           if(e.detectCollisonWith(_game.protectling)){
+             _game.protectling.die();
+           }
+            List pi = _game._ffisch.projectiles.toList();
+            pi.forEach((p){
+             if(e.detectCollisonWith(p)){
+                        e.die();
+                        _game._score+=1;
+                        _game._ffisch.projectiles.remove(p);
+                        
+             }
+             if(p._position_x>=gamesize-1){
+                                        p.die();
+                                        _game._ffisch.projectiles.remove(p);
+                                      }
+             
            }); 
+            if(e._position_x<=0){
+                           e.die();
+                          
+                         }
+    });
+          
   }
   
   
@@ -57,7 +102,7 @@ class ProtectlingGenerator extends Generator {
 //A class for levels
 class Level{
   int speed = 1;
-  int enemy_frequency = 40;
+  int enemy_frequency = 60;
   
   Level(){
     
@@ -77,9 +122,14 @@ class Movable_Object{
   int _position_y;
   int _sizex;
   int _sizey;
+  bool dead = false;
   
   Movable_Object(this._game){
 
+  }
+  
+  void die(){
+    this.dead = true;
   }
   
   //Detects collision with another Movable_Object with bounding boxes in size of the object. Returns true in case of collision.
@@ -144,7 +194,7 @@ class Movable_Object{
 class Projectile extends Movable_Object{
   int _sizex = 1;
   int _sizey = 1;
-  Projectile.on(_game) : super(_game){
+  Projectile(_game) : super(_game){
 
   }
   
@@ -156,13 +206,46 @@ class Enemy extends Movable_Object{
   Enemy(_game) : super(_game){
     
   }
+  
 }
 
 class Protectling extends Movable_Object{
-  int _sizex = 2;
-  int _sizey = 1;
-  Protectling.on(_game) : super(_game){
+  int _sizex = 1;
+  int _sizey = 2;
+  bool dead = false;
+  int dir =1;
+  Protectling(_game) : super(_game){
     
+  }
+  
+  move(){
+    if( _position_y >0){
+      
+    if(_position_y==gamesize-_sizey-1){
+      moveup();
+      moveleft();
+      moveleft();
+      moveleft();
+      dir=-1;
+    }
+    
+    if(_position_y-_sizey == 0){
+      movedown();
+      moveleft();
+      moveleft();
+      moveleft();
+      dir = 1;
+    }
+    
+    }
+    
+    this._position_y+=dir;
+    if(_position_x < 1){
+      this.dead = true;
+      _game._score+=10;
+      
+    }
+     
   }
 }
 
@@ -172,6 +255,8 @@ class Ffisch extends Movable_Object{
   int _lifes;
   int _sizex = 4;
   int _sizey = 3;
+  List<Projectile> projectiles = new List<Projectile>();
+  
   Ffisch(_game):super(_game){
     
     final s = _game.size;
@@ -208,6 +293,12 @@ class Ffisch extends Movable_Object{
   void setpowerups(int anzahl){
     this._powerups=anzahl;
   }
+  
+  void shoot(){
+    var p = new Projectile(_game);
+    p.setposition(this._position_x+_sizex+1, this._position_y+(this._sizey ~/2));
+    projectiles.add(p);
+  }
 }
   
 
@@ -224,6 +315,8 @@ class RaumffischGame {
   // The snake of the game.
 
   Ffisch _ffisch;
+  Protectling protectling;
+  int _score = 0;
   
   EnemyGenerator _enemyGenerator;
 
@@ -269,6 +362,8 @@ class RaumffischGame {
     start();
 
     _ffisch = new Ffisch(this);
+    protectling = new Protectling(this);
+    protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
     _enemyGenerator = new EnemyGenerator(new Level(), this);
     stop();
   }
@@ -309,11 +404,13 @@ class RaumffischGame {
     });
     
     _enemyGenerator._enemies.forEach((p){
-        for(int i=0;i<p._sizey;i++){
-          for(int j=0;j<p._sizex;j++){
-            _field[p._position_y+i][p._position_x+j] = #enemy;
+        if(p.dead == false){
+          for(int i=0;i<p._sizey;i++){
+            for(int j=0;j<p._sizex;j++){
+              _field[p._position_y+i][p._position_x+j] = #enemy;
+            }
           }
-        }      
+        }
     });
    
     
@@ -322,6 +419,20 @@ class RaumffischGame {
         _field[ffisch._position_y+i][ffisch._position_x+j] = #ffisch;
       }
     }
+    
+    for(int i=0;i<protectling._sizey;i++){
+      for(int j=0;j<protectling._sizex;j++){
+        _field[protectling._position_y+i][protectling._position_x+j] = #protectling;
+      }
+    }
+    
+    _ffisch.projectiles.forEach((p){
+        for(int i=0;i<p._sizey;i++){
+          for(int j=0;j<p._sizex;j++){
+            _field[p._position_y+i][p._position_x+j] = #projectile;
+          }
+        }      
+    });
     return _field;
   }
 
