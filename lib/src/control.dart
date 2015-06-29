@@ -4,7 +4,7 @@ part of dartsnake;
  * Constant to define the speed of a [Snake].
  * A [gameSpeed] of 250ms means 4 movements per second.
  */
-const gameSpeed = const Duration(milliseconds: 2);
+const gameSpeed = const Duration(milliseconds: 30);
 
 /**
  * Constant to define the speed of a [Mouse].
