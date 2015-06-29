@@ -4,7 +4,11 @@ part of dartsnake;
  * Constant to define the speed of a [Snake].
  * A [gameSpeed] of 250ms means 4 movements per second.
  */
+<<<<<<< HEAD
 const gameSpeed = const Duration(milliseconds: 30);
+=======
+const gameSpeed = const Duration(milliseconds: 20);
+>>>>>>> refs/remotes/origin/master
 
 /**
  * Constant to define the speed of a [Mouse].
@@ -83,7 +87,9 @@ class SnakeGameController {
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       miceTrigger = new Timer.periodic(miceSpeed, (_) => _moveMice());
       mkc=new MultiKeyController();
-    
+      AudioElement audio = querySelector('#audiop');
+      audio.muted=false;
+      audio.play();
       game.start();
       view.update(game);
     });

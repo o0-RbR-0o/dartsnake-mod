@@ -50,6 +50,8 @@ class SnakeView {
    * Start button of the game.
    */
   HtmlElement get startButton => querySelector('#start');
+  
+  
 
   /**
    * Updates the view according to the [model] state.
