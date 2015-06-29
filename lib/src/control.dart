@@ -5,16 +5,12 @@ part of dartsnake;
  * A [gameSpeed] of 250ms means 4 movements per second.
  */
 
-const gameSpeed = const Duration(milliseconds: 30);
+const gameSpeed = const Duration(milliseconds: 20);
 
 
 
 
-/**
- * Constant to define the speed of a [Mouse].
- * A [miceSpeed] of 1000ms means 1 movement per second.
- */
-const miceSpeed = const Duration(milliseconds: 1000);
+
 
 
 class MultiKeyController{
@@ -36,18 +32,18 @@ class MultiKeyController{
 
 
 /**
- * A [SnakeGameController] object registers several handlers
+ * A [GameController] object registers several handlers
  * to grab interactions of a user with a [RaumffischGame] and translate
  * them into valid [RaumffischGame] actions.
  *
- * Furthermore a [SnakeGameController] object triggers the
+ * Furthermore a [GameController] object triggers the
  * movements of a [Snake] object and (several) [Mouse] objects
  * of a [RaumffischGame].
  *
- * Necessary updates of the view are delegated to a [SnakeView] object
+ * Necessary updates of the view are delegated to a [GameView] object
  * to inform the user about changing [RaumffischGame] states.
  */
-class SnakeGameController {
+class GameController {
 
   /**
    * Referencing the to be controlled model.
@@ -57,7 +53,7 @@ class SnakeGameController {
   /**
    * Referencing the presenting view.
    */
-  final view = new SnakeView();
+  final view = new GameView();
 
   /**
    * Periodic trigger controlling snake movement.
@@ -76,7 +72,7 @@ class SnakeGameController {
    * Registers all necessary event handlers necessary
    * for the user to interact with a [RaumffischGame].
    */
-  SnakeGameController() {
+  GameController() {
 
     // New game is started by user
     view.startButton.onClick.listen((_) {
@@ -85,7 +81,6 @@ class SnakeGameController {
       game = new RaumffischGame(gamesize);
       view.generateField(game);
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
-      miceTrigger = new Timer.periodic(miceSpeed, (_) => _moveMice());
       mkc=new MultiKeyController();
       AudioElement audio = querySelector('#audiop');
       audio.muted=false;
@@ -103,21 +98,14 @@ class SnakeGameController {
     });
   }
 
-  /**
-   * Moves all mice.
-   */
-  void _moveMice() {
-    if (game.gameOver) { game.stop(); view.update(game); return; }
-    game.moveMice();
-    view.update(game);
-  }
+
 
   /**
    * Moves the snake.
    */
   void _update() {
     if (game.gameOver) { game.stop(); view.update(game); return; }
-    final mice = game.miceCounter;
+
     
     if (!game.stopped){
             
@@ -148,17 +136,9 @@ class SnakeGameController {
     
     
     game.update();
-    if (game.miceCounter > mice) { _increaseSnakeSpeed(); }
-    if (game.gameOver) return;
+
     view.update(game);
   }
 
-  /**
-   * Increases Snake speed by 1% for every eaten mouse.
-   */
-  void _increaseSnakeSpeed() {
-    updateTrigger.cancel();
-    final newSpeed = gameSpeed * pow(0.99, game.miceCounter);
-    updateTrigger = new Timer.periodic(newSpeed, (_) => _update());
-  }
+
 }

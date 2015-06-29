@@ -123,6 +123,7 @@ class Movable_Object{
   int _sizex;
   int _sizey;
   bool dead = false;
+  String unitname = "";
   
   Movable_Object(this._game){
 
@@ -195,7 +196,7 @@ class Projectile extends Movable_Object{
   int _sizex = 1;
   int _sizey = 1;
   Projectile(_game) : super(_game){
-
+    unitname = "projectile";
   }
   
 }
@@ -204,7 +205,7 @@ class Enemy extends Movable_Object{
   int _sizex = 3;
   int _sizey = 3;
   Enemy(_game) : super(_game){
-    
+    unitname = "enemy";
   }
   
 }
@@ -214,8 +215,9 @@ class Protectling extends Movable_Object{
   int _sizey = 2;
   bool dead = false;
   int dir =1;
+  
   Protectling(_game) : super(_game){
-    
+    unitname = "protectling";
   }
   
   move(){
@@ -259,6 +261,7 @@ class Ffisch extends Movable_Object{
   List<Projectile> projectiles = new List<Projectile>();
   
   Ffisch(_game):super(_game){
+    unitname = "ffisch";
     
     final s = _game.size;
      this._position_y =  s ~/2;
@@ -437,7 +440,15 @@ class RaumffischGame {
     return _field;
   }
 
-
+  List<Movable_Object> get objects {
+    List<Movable_Object> objects = new List<Movable_Object>();
+    objects.add(protectling);
+    objects.add(_ffisch);
+    objects.addAll(_enemyGenerator._enemies);
+    objects.addAll(_ffisch.projectiles);
+    return objects;
+  }
+  
 
 
   /**
@@ -458,7 +469,6 @@ class RaumffischGame {
    * movement direction.
    * Operation is only executed if game state is [running].
    */
-  void moveMice() {/* if (running) mice.forEach((m) => m.move()); */ }
 
   /**
    * Adds a new [Mouse] to the game.

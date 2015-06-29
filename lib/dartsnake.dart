@@ -9,5 +9,5 @@ part 'src/model.dart';
 part 'src/control.dart';
 part 'src/view.dart';
 
-const gamesize = 64;
+const gamesize = 80;
 

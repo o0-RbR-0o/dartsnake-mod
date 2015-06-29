@@ -102,22 +102,84 @@ table{
   //background: rgba(255, 255, 255, 0.1);
 }
 
-.mouse {
-  background-color: red !important;
+
+
+
+
+.ffisch00 {
+  background-image: url('img/ffisch/fisch00.png');
 
 }
 
-.ffisch {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+.ffisch01 {
+  background-image: url('img/ffisch/fisch01.png');
 
 }
+
+.ffisch02 {
+  background-image: url('img/ffisch/fisch02.png');
+
+}
+
+.ffisch10 {
+  background-image: url('img/ffisch/fisch10.png');
+
+}
+
+.ffisch11 {
+  background-image: url('img/ffisch/fisch11.png');
+
+}
+.ffisch12 {
+  background-image: url('img/ffisch/fisch12.png');
+
+}
+
+.ffisch20{
+  background-image: url('img/ffisch/fisch20.png');
+
+}
+.ffisch21{
+  background-image: url('img/ffisch/fisch21.png');
+
+}
+
+.ffisch22 {
+  background-image: url('img/ffisch/fisch22.png');
+
+}
+
+.ffisch30{
+  background-image: url('img/ffisch/fisch30.png');
+
+}
+.ffisch31{
+  background-image: url('img/ffisch/fisch31.png');
+
+}
+
+.ffisch32 {
+  background-image: url('img/ffisch/fisch32.png');
+
+}
+
 
 .protectling {
   background-color: green !important;
   
 }
 
-.projectile {
+.protectling00 {
+  background-color: green !important;
+  
+}
+
+.protectling01 {
+  background-color: green !important;
+  
+}
+
+.projectile00 {
   background-image: url('img/bullet.gif');
   //background-color: blue !important;
 
@@ -125,6 +187,39 @@ table{
   background-position: left top;
 }
 
-.enemy {
+.enemy00 {
+  background-color: red !important;
+}
+
+.enemy01 {
+  background-color: red !important;
+}
+
+.enemy02 {
+  background-color: red !important;
+}
+
+
+.enemy10 {
+  background-color: red !important;
+}
+
+.enemy11 {
+  background-color: red !important;
+}
+
+.enemy12 {
+  background-color: red !important;
+}
+
+.enemy20 {
+  background-color: red !important;
+}
+
+.enemy21 {
+  background-color: red !important;
+}
+
+.enemy22 {
   background-color: red !important;
 }

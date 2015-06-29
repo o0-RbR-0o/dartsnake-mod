@@ -1,10 +1,10 @@
 part of dartsnake;
 
 /**
- * A [SnakeView] object interacts with the DOM tree
+ * A [GameView] object interacts with the DOM tree
  * to reflect actual [RaumffischGame] state to the user.
  */
-class SnakeView {
+class GameView {
 
   List<List<Element>> gamefield;
   
@@ -81,7 +81,7 @@ class SnakeView {
     // Updates the field
     
     
-    
+    /*
     final field = model.field;
     for (int row = 0; row < field.length; row++) {
       for (int col = 0; col < field[row].length; col++) {
@@ -96,6 +96,22 @@ class SnakeView {
       }
       
     }
+    */
+    
+    gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
+    model.objects.forEach(
+            (o){
+              if(!o.dead){
+              for(int i = 0;i<o._sizex;i++){
+                for(int j = 0;j<o._sizey;j++){
+
+                  gamefield[o._position_x+i][o._position_y+j].classes.add(o.unitname+i.toString()+j.toString());                  
+                }
+                
+              }
+            }
+    }
+    );
   }
 
   /**
