@@ -67,8 +67,9 @@ a {
 
 /* Spielbrett */
 body {
+  height:100%;
   background-image: url('img/space.jpg');
-  background-position: center center;
+  background-position: top left;
   margin: 0px;
   padding: 0px;
 }
@@ -78,16 +79,24 @@ body {
 }
 
 table{
+  border-collapse:collapse;
   background: rgba(255, 255, 255, 0.1);
   border:1px solid white;
   
 }
 
 #snakegame table{
+  
+  border-collapse:collapse;
   border:1px solid white;
+  margin:0px;
+  padding:0px;
 
 }
 #snakegame td {
+  
+  margin:0px;
+  padding:0px;
   width: 8px;
   height: 8px;
   //background: rgba(255, 255, 255, 0.1);
@@ -95,17 +104,17 @@ table{
 
 .mouse {
   background-color: red !important;
-  border-radius: 10px;
+
 }
 
 .ffisch {
   background-color: rgba(255, 255, 255, 0.9) !important;
-  border-radius: 10px;
+
 }
 
 .protectling {
   background-color: green !important;
-  border-radius: 10px;
+  
 }
 
 .projectile {
@@ -118,5 +127,4 @@ table{
 
 .enemy {
   background-color: red !important;
-  border-radius: 10px;
 }

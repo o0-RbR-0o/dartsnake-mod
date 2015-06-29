@@ -6,7 +6,7 @@ part of dartsnake;
  */
 class SnakeView {
 
-  List<List<Element>> gamefield = new List<List<Element>>();
+  List<List<Element>> gamefield;
   
   /**
    * Element with id '#title' of the DOM tree.
@@ -104,6 +104,7 @@ class SnakeView {
    * into the [game] element of the DOM tree.
    */
   void generateField(RaumffischGame model) {
+    gamefield = new List<List<Element>>();
     final field = model.field;
 
     String table = "";
