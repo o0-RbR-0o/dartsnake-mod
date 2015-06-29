@@ -83,16 +83,16 @@ class SnakeView {
     final field = model.field;
     for (int row = 0; row < field.length; row++) {
       for (int col = 0; col < field[row].length; col++) {
-        final td = gamefield[col][row];
-        if (td != null) {
-          td.classes.clear();
-          if (field[row][col]== #protectling) td.classes.add('protectling');
-          else if (field[row][col] == #ffisch) td.classes.add('ffisch');
-          else if (field[row][col] == #enemy) td.classes.add('enemy');
-          else if (field[row][col] == #projectile) td.classes.add('projectile');
-          else if (field[row][col] == #empty) td.classes.add('empty');
-        }
+        
+      
+          gamefield[col][row].classes.clear();
+          if (field[row][col]== #protectling) gamefield[col][row].classes.add('protectling');
+          else if (field[row][col] == #ffisch) gamefield[col][row].classes.add('ffisch');
+          else if (field[row][col] == #enemy) gamefield[col][row].classes.add('enemy');
+          else if (field[row][col] == #projectile) gamefield[col][row].classes.add('projectile');
+       
       }
+      
     }
   }
 
