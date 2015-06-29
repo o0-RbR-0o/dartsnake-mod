@@ -77,14 +77,20 @@ body {
   margin: 5px auto 5px auto;
 }
 
+table{
+  background: rgba(255, 255, 255, 0.1);
+  border:1px solid white;
+  
+}
+
 #snakegame table{
   border:1px solid white;
+
 }
 #snakegame td {
   width: 8px;
   height: 8px;
-  
-  background: rgba(255, 255, 255, 0.1);
+  //background: rgba(255, 255, 255, 0.1);
 }
 
 .mouse {
@@ -103,8 +109,11 @@ body {
 }
 
 .projectile {
+  background-image: url('img/bullet.gif');
+  //background-color: blue !important;
+
   background-color: blue !important;
-  border-radius: 10px;
+  background-position: left top;
 }
 
 .enemy {

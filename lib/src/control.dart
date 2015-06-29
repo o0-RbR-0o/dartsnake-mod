@@ -12,6 +12,25 @@ const gameSpeed = const Duration(milliseconds: 2);
  */
 const miceSpeed = const Duration(milliseconds: 1000);
 
+
+class MultiKeyController{
+  HashMap<int,int> _pressedKeys = new HashMap<int,int>();
+  
+  MultiKeyController(){
+    window.onKeyDown.listen((KeyboardEvent e) {
+          if (!_pressedKeys.containsKey(e.keyCode))
+            _pressedKeys[e.keyCode] = e.timeStamp;
+        });
+
+        window.onKeyUp.listen((KeyboardEvent e) {
+          _pressedKeys.remove(e.keyCode);
+    });
+        
+  }
+  isPressed(int keyCode) => _pressedKeys.containsKey(keyCode);
+}
+
+
 /**
  * A [SnakeGameController] object registers several handlers
  * to grab interactions of a user with a [RaumffischGame] and translate
@@ -45,6 +64,8 @@ class SnakeGameController {
    * Periodic trigger controlling mice movement.
    */
   Timer miceTrigger;
+  
+  MultiKeyController mkc;
 
   /**
    * Constructor to create a controller object.
@@ -61,7 +82,7 @@ class SnakeGameController {
       view.generateField(game);
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       miceTrigger = new Timer.periodic(miceSpeed, (_) => _moveMice());
-      
+      mkc=new MultiKeyController();
     
       game.start();
       view.update(game);
@@ -70,32 +91,7 @@ class SnakeGameController {
     // Steering of the snake
   
     window.onKeyDown.listen((KeyboardEvent ev) {
-      if (game.stopped) return;
-        
       
-        //Ffisch nach links bewegen
-        if(ev.keyCode==KeyCode.LEFT)
-          game.ffisch.moveleft();
-        //Ffisch nach recht bewegen
-        if(ev.keyCode==KeyCode.RIGHT) 
-          game.ffisch.moveright();
-        //Ffisch nach oben bewegen
-        if(ev.keyCode==KeyCode.UP)   
-          game.ffisch.moveup();
-        //Ffisch nach unten bewegen
-        if(ev.keyCode==KeyCode.DOWN)  
-          game.ffisch.movedown(); 
-        //Feuern
-        if(ev.keyCode==KeyCode.SPACE) 
-          game.ffisch.shoot();/**/ 
-        //Spiel anhalten
-        if(ev.keyCode== KeyCode.PAUSE);/**/ 
-       
-        //PowerUp benutzen
-        if(ev.keyCode== KeyCode.ALT); /**/ 
-          
-        
-        
         
       
     });
@@ -116,6 +112,35 @@ class SnakeGameController {
   void _update() {
     if (game.gameOver) { game.stop(); view.update(game); return; }
     final mice = game.miceCounter;
+    
+    if (!game.stopped){
+            
+          
+            //Ffisch nach links bewegen
+            if(mkc.isPressed(KeyCode.LEFT))
+              game.ffisch.moveleft();
+            //Ffisch nach recht bewegen
+            if(mkc.isPressed(KeyCode.RIGHT) )
+              game.ffisch.moveright();
+            //Ffisch nach oben bewegen
+            if(mkc.isPressed(KeyCode.UP)   )
+              game.ffisch.moveup();
+            //Ffisch nach unten bewegen
+            if(mkc.isPressed(KeyCode.DOWN)  )
+              game.ffisch.movedown(); 
+            //Feuern
+            if(mkc.isPressed(KeyCode.SPACE) )
+              game.ffisch.shoot();/**/ 
+            //Spiel anhalten
+            if(mkc.isPressed( KeyCode.PAUSE));/**/ 
+           
+            //PowerUp benutzen
+            if(mkc.isPressed( KeyCode.ALT)); /**/ 
+              
+            
+          }
+    
+    
     game.update();
     if (game.miceCounter > mice) { _increaseSnakeSpeed(); }
     if (game.gameOver) return;

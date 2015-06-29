@@ -240,9 +240,10 @@ class Protectling extends Movable_Object{
     }
     
     this._position_y+=dir;
-    if(_position_x < 1){
+    if(_position_x < 2){
       this.dead = true;
       _game._score+=10;
+      
       
     }
      
@@ -296,7 +297,7 @@ class Ffisch extends Movable_Object{
   
   void shoot(){
     var p = new Projectile(_game);
-    p.setposition(this._position_x+_sizex+1, this._position_y+(this._sizey ~/2));
+    p.setposition(this._position_x+_sizex-1, this._position_y+(this._sizey ~/2));
     projectiles.add(p);
   }
 }
