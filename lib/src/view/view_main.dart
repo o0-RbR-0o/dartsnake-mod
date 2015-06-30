@@ -1,4 +1,4 @@
-part of dartsnake;
+part of raumffisch;
 
 /**
  * A [GameView] object interacts with the DOM tree

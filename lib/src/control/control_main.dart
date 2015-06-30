@@ -1,35 +1,4 @@
-part of dartsnake;
-
-/**
- * Constant to define the speed of a [Snake].
- * A [gameSpeed] of 250ms means 4 movements per second.
- */
-
-const gameSpeed = const Duration(milliseconds: 20);
-
-
-
-
-
-
-
-class MultiKeyController{
-  HashMap<int,int> _pressedKeys = new HashMap<int,int>();
-  
-  MultiKeyController(){
-    window.onKeyDown.listen((KeyboardEvent e) {
-          if (!_pressedKeys.containsKey(e.keyCode))
-            _pressedKeys[e.keyCode] = e.timeStamp;
-        });
-
-        window.onKeyUp.listen((KeyboardEvent e) {
-          _pressedKeys.remove(e.keyCode);
-    });
-        
-  }
-  isPressed(int keyCode) => _pressedKeys.containsKey(keyCode);
-}
-
+part of raumffisch;
 
 /**
  * A [GameController] object registers several handlers
