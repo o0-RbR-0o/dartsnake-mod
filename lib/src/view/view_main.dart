@@ -102,8 +102,8 @@ class GameView {
     
     //update background scrolling \o/
     this.backgroundscroll=(this.backgroundscroll+1)%(gamesize*8*2);
-    this.sbg.style.backgroundPositionX=(-this.backgroundscroll/2).toString()+"px";
-    this.sbg2.style.backgroundPositionX=(-this.backgroundscroll).toString()+"px";
+    this.sbg.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
+    this.sbg2.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     
     
     
