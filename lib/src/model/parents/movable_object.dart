@@ -5,13 +5,15 @@ class Movable_Object{
   final RaumffischGame _game;
   int _position_x;
   int _position_y;
+  int _initial_x=-1;
+  int _initial_y=-1;
   int _sizex;
   int _sizey;
   bool dead = false;
   String unitname = "";
   
   Movable_Object(this._game){
-
+    
   }
   
   void die(){
@@ -31,6 +33,16 @@ class Movable_Object{
     if(this._position_x>0)
     this._position_x--;
   }
+  
+  //Moves the Movable_Object left in sin y 1px;
+   void moveright_sin(int amplitude,int wavelength){
+     if(this._position_x < (this._game._size-this._sizex)){
+      this._position_y=this._initial_y+(sin((this._position_x-this._initial_x)/wavelength)*amplitude).round();
+     this._position_y= this._position_y<0?0:this._position_y;
+     this._position_y= this._position_y>(gamesize-1)?(gamesize-1):this._position_y;
+       this._position_x++;
+     }
+   }
   
   //Moves the Movable_Object right 1px;
   void moveright(){
@@ -61,6 +73,9 @@ class Movable_Object{
   
   //Sets X,Y-Position of the Movable_Object
   void setposition(int x,int y){
+     _initial_y=_initial_y==-1?y:_initial_y;
+     _initial_x=_initial_x==-1?x:_initial_x;
+
     this._position_x=x;
     this._position_y=y;
   }

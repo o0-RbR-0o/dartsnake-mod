@@ -80,8 +80,22 @@ body {
 
 table{
   border-collapse:collapse;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.6);
+  background-image:url('img/starfield2.png');
   border:1px solid white;
+  
+}
+
+#scrollbg{
+  border-collapse:collapse;
+  background-image:url('img/starfield.png');
+  background-position-x:55px;
+  border:0px solid green;
+  margin:auto;
+  padding:auto;
+  max-width:640px;
+  max-height:640px;
+
   
 }
 
@@ -91,6 +105,9 @@ table{
   border:1px solid white;
   margin:0px;
   padding:0px;
+  background-image:url('img/starfield2.png');
+  background-position-x:0px;
+  
 
 }
 #snakegame td {

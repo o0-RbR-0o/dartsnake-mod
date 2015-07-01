@@ -6,7 +6,8 @@ class Ffisch extends Movable_Object{
   int _lifes;
   int _sizex = 4;
   int _sizey = 3;
-  List<Projectile> projectiles = new List<Projectile>();
+  int _sfreq_counter=0;
+  List<Bullet> projectiles = new List<Bullet>();
   
   Ffisch(_game):super(_game){
     unitname = "ffisch";
@@ -47,8 +48,14 @@ class Ffisch extends Movable_Object{
   }
   
   void shoot(){
-    var p = new Projectile(_game);
+    Bullet p = new Projectile(_game);
+    
     p.setposition(this._position_x+_sizex-1, this._position_y+(this._sizey ~/2));
-    projectiles.add(p);
+   
+    this._sfreq_counter=(this._sfreq_counter+1)%p._shot_frequency;
+    
+    if(this._sfreq_counter==0){
+     projectiles.add(p);
+    }
   }
 }

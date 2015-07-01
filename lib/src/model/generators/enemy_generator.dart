@@ -19,7 +19,10 @@ class EnemyGenerator extends Generator {
 
       
     });
-    _game._ffisch.projectiles.forEach((p){p.moveright();p.moveright();});
+  
+    _game._ffisch.projectiles.forEach((p){
+      p.move();p.move();
+    });
     if(_random.nextInt(_level.enemy_frequency)==0){
       
       

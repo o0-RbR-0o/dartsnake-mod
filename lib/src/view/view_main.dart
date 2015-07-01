@@ -21,13 +21,15 @@ class GameView {
   final welcome = querySelector("#welcome");
   final score = querySelector("#score");
 
-
   /**
    * Element with id '#snakegame' of the DOM tree.
    * Used to visualize the field of a [RaumffischGame] as a HTML table.
    */
   final game = querySelector('#snakegame');
 
+  
+  final HtmlElement sbg = querySelector('#snakegame');
+  final HtmlElement sbg2 = querySelector('#scrollbg');
   /**
    * Element with id '#gameover' of the DOM tree.
    * Used to indicate that a game is over.
@@ -51,7 +53,7 @@ class GameView {
    */
   HtmlElement get startButton => querySelector('#start');
   
-  
+  int backgroundscroll=0;
 
   /**
    * Updates the view according to the [model] state.
@@ -97,6 +99,14 @@ class GameView {
       
     }
     */
+    
+    //update background scrolling \o/
+    this.backgroundscroll=(this.backgroundscroll+1)%(gamesize*8*2);
+    this.sbg.style.backgroundPositionX=(-this.backgroundscroll/2).toString()+"px";
+    this.sbg2.style.backgroundPositionX=(-this.backgroundscroll).toString()+"px";
+    
+    
+    
     
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
     model.objects.forEach(
