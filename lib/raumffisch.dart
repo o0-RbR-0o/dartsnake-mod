@@ -23,4 +23,4 @@ part 'src/control/control_main.dart';
 part 'src/view/view_main.dart';
 
 const gamesize = 80;
-const gameSpeed = const Duration(milliseconds: 20);
+const gameSpeed = const Duration(milliseconds: 15);

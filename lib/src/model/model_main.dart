@@ -90,44 +90,6 @@ class RaumffischGame {
     var _field = new Iterable.generate(_size, (row) {
       return new Iterable.generate(_size, (col) => #empty).toList();
     }).toList();
-    protectlings.forEach((p){
-        for(int i=0;i<p._sizey;i++){
-          for(int j=0;j<p._sizex;j++){
-            _field[p._position_y+i][p._position_x+j] = #protectling;
-          }
-        }      
-    });
-    
-    _enemyGenerator._enemies.forEach((p){
-        if(p.dead == false){
-          for(int i=0;i<p._sizey;i++){
-            for(int j=0;j<p._sizex;j++){
-              _field[p._position_y+i][p._position_x+j] = #enemy;
-            }
-          }
-        }
-    });
-   
-    
-    for(int i=0;i<ffisch._sizey;i++){
-      for(int j=0;j<ffisch._sizex;j++){
-        _field[ffisch._position_y+i][ffisch._position_x+j] = #ffisch;
-      }
-    }
-    
-    for(int i=0;i<protectling._sizey;i++){
-      for(int j=0;j<protectling._sizex;j++){
-        _field[protectling._position_y+i][protectling._position_x+j] = #protectling;
-      }
-    }
-    
-    _ffisch.projectiles.forEach((p){
-        for(int i=0;i<p._sizey;i++){
-          for(int j=0;j<p._sizex;j++){
-            _field[p._position_y+i][p._position_x+j] = #projectile;
-          }
-        }      
-    });
     return _field;
   }
 
