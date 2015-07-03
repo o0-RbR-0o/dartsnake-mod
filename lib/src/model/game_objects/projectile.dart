@@ -17,7 +17,7 @@ class Projectile extends Movable_Object implements Bullet{
   int _sizey = 1;
   int _damage=1;
   int _stability=1;
-  int _shot_frequency=8;
+  int _shot_frequency=4;
   
   Projectile(_game) : super(_game){
     unitname = "projectile";

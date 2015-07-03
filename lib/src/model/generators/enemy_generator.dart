@@ -7,12 +7,12 @@ class EnemyGenerator extends Generator {
   EnemyGenerator(Level level, RaumffischGame game) :super(level, game){
     
   }
-  void tick (){
+  void tick (int period){
     if(_game.protectling.dead == true){
       _game.protectling.setposition((gamesize-1)~/2, gamesize-1-_game.protectling._sizey);
       _game.protectling.dead = false;
     }
-    _game.protectling.move();
+    _game.protectling.move(period);
     
     _enemies.forEach((e){
       e.moveleft(); 
@@ -39,12 +39,12 @@ class EnemyGenerator extends Generator {
     _enemies.forEach((e){
       if(e.detectCollisonWith(_game._ffisch) && !e.dead){
         _game._gameOver = true;}
-      if(e.detectCollisonWith(_game.protectling)){
+      if(e.detectCollisonWith(_game.protectling) && !e.dead){
         _game.protectling.die();
     }
     List pi = _game._ffisch.projectiles.toList();
     pi.forEach((p){
-      if(e.detectCollisonWith(p)){
+      if(e.detectCollisonWith(p) && p.dead == false && e.dead ==false){
         e.die();
         _game._score+=1;
         _game._ffisch.projectiles.remove(p);             

@@ -10,8 +10,9 @@ class Protectling extends Movable_Object{
     unitname = "protectling";
   }
   
-  move(){
-    if( _position_y >0){
+  move(int period){
+ 
+
       
     if(_position_y==gamesize-_sizey-1){
       moveup();
@@ -29,13 +30,13 @@ class Protectling extends Movable_Object{
       dir = 1;
     }
     
-    }
     
-    this._position_y+=dir;
-    if(_position_x < 2){
-      this.dead = true;
-      _game._score+=10;
+    if(period % 2 == 0){
+      this._position_y+=dir;
+      if(_position_x < 2){
+        this.dead = true;
+        _game._score+=10;
+      }
     }
-     
   }
 }

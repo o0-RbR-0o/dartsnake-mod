@@ -13,6 +13,8 @@ class RaumffischGame {
   Protectling protectling;
   int _score = 0;
   
+  int period = 0;
+  
   EnemyGenerator _enemyGenerator;
 
   // List of mice.
@@ -102,9 +104,10 @@ class RaumffischGame {
     return objects;
   }
   
-  void update() {
+  void update(int period) {
+    this.period = period;
     if (running){
-      _enemyGenerator.tick();
+      _enemyGenerator.tick(period);
     }
   }
   int get size => _size;

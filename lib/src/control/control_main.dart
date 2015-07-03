@@ -23,16 +23,14 @@ class GameController {
    * Referencing the presenting view.
    */
   final view = new GameView();
+  
+  
+  int period = 0;
 
   /**
    * Periodic trigger controlling snake movement.
    */
   Timer updateTrigger;
-
-  /**
-   * Periodic trigger controlling mice movement.
-   */
-  Timer miceTrigger;
   
   MultiKeyController mkc;
 
@@ -41,7 +39,6 @@ class GameController {
     // New game is started by user
     view.startButton.onClick.listen((_) {
       if (updateTrigger != null) updateTrigger.cancel();
-      if (miceTrigger != null) miceTrigger.cancel();
       game = new RaumffischGame(gamesize);
       view.generateField(game);
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
@@ -60,6 +57,7 @@ class GameController {
 
   //Update pressed keys and tell model what to do.
   void _update() {
+    period++;
     if (game.gameOver) { game.stop(); view.update(game); return; }
       if (!game.stopped){
         //Ffisch nach links bewegen
@@ -82,7 +80,7 @@ class GameController {
         //PowerUp benutzen
          if(mkc.isPressed( KeyCode.ALT)); /**/        
      }
-    game.update();
+    game.update(period);
     view.update(game);
   }
 }
