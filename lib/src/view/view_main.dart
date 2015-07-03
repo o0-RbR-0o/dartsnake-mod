@@ -65,9 +65,9 @@ class GameView {
 
     
     //update background scrolling \o/
-    this.backgroundscroll=(this.backgroundscroll+1)%(gamesize*8*2);
-    this.sbg.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
-    this.sbg2.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
+    this.backgroundscroll=(this.backgroundscroll+2)%(gamesize*8*2);
+    this.sbg.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
+    this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
