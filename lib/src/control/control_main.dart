@@ -36,11 +36,6 @@ class GameController {
   
   MultiKeyController mkc;
 
-  /**
-   * Constructor to create a controller object.
-   * Registers all necessary event handlers necessary
-   * for the user to interact with a [RaumffischGame].
-   */
   GameController() {
 
     // New game is started by user
@@ -58,56 +53,36 @@ class GameController {
       view.update(game);
     });
 
-    // Steering of the snake
-  
+    // Getting inputs:
     window.onKeyDown.listen((KeyboardEvent ev) {
-      
-        
-      
     });
   }
 
-
-
-  /**
-   * Moves the snake.
-   */
+  //Update pressed keys and tell model what to do.
   void _update() {
     if (game.gameOver) { game.stop(); view.update(game); return; }
-
-    
-    if (!game.stopped){
-            
-          
-            //Ffisch nach links bewegen
-            if(mkc.isPressed(KeyCode.LEFT))
-              game.ffisch.moveleft();
-            //Ffisch nach recht bewegen
-            if(mkc.isPressed(KeyCode.RIGHT) )
-              game.ffisch.moveright();
-            //Ffisch nach oben bewegen
-            if(mkc.isPressed(KeyCode.UP)   )
-              game.ffisch.moveup();
-            //Ffisch nach unten bewegen
-            if(mkc.isPressed(KeyCode.DOWN)  )
-              game.ffisch.movedown(); 
-            //Feuern
-            if(mkc.isPressed(KeyCode.SPACE) )
-              game.ffisch.shoot();/**/ 
-            //Spiel anhalten
-            if(mkc.isPressed( KeyCode.PAUSE));/**/ 
-           
-            //PowerUp benutzen
-            if(mkc.isPressed( KeyCode.ALT)); /**/ 
-              
-            
-          }
-    
-    
+      if (!game.stopped){
+        //Ffisch nach links bewegen
+        if(mkc.isPressed(KeyCode.LEFT))
+          game.ffisch.moveleft();
+        //Ffisch nach recht bewegen
+        if(mkc.isPressed(KeyCode.RIGHT) )
+          game.ffisch.moveright();
+        //Ffisch nach oben bewegen
+        if(mkc.isPressed(KeyCode.UP)   )
+          game.ffisch.moveup();
+        //Ffisch nach unten bewegen
+        if(mkc.isPressed(KeyCode.DOWN)  )
+          game.ffisch.movedown(); 
+        //Feuern
+        if(mkc.isPressed(KeyCode.SPACE) )
+          game.ffisch.shoot();/**/ 
+        //Spiel anhalten
+        if(mkc.isPressed( KeyCode.PAUSE));/**/ 
+        //PowerUp benutzen
+         if(mkc.isPressed( KeyCode.ALT)); /**/        
+     }
     game.update();
-
     view.update(game);
   }
-
-
 }

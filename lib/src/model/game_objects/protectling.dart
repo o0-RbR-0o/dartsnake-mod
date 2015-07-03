@@ -35,8 +35,6 @@ class Protectling extends Movable_Object{
     if(_position_x < 2){
       this.dead = true;
       _game._score+=10;
-      
-      
     }
      
   }

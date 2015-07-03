@@ -55,73 +55,34 @@ class GameView {
   
   int backgroundscroll=0;
 
-  /**
-   * Updates the view according to the [model] state.
-   *
-   * - [startButton] is shown according to the stopped/running state of the [model].
-   * - [points] are updated according to the [model] state.
-   * - [gameover] is shown when [model] indicates game over state.
-   * - Game over [reasons] ([model.snake] tangled or off field) are shown when [model] is in game over state.
-   * - Field is shown according to actual field state of [model].
-   */
   void update(RaumffischGame model) {
     
     score.setInnerHtml(model._score.toString());
     
     welcome.style.display = model.stopped ? "block" : "none";
-    // title.style.display = model.stopped? "block" : "none";
 
-    //points.innerHtml = "Points: ${model.miceCounter}";
-    //gameover.innerHtml = model.gameOver ? "Game Over" : "";
     reasons.innerHtml = "";
-    //if (model.gameOver) {
-    //  final tangled = model.snake.tangled ? "Do not tangle your snake<br>" : "";
-    //  final onfield = model.snake.notOnField ? "Keep your snake on the field<br>" : "";
-    //  reasons.innerHtml = "$tangled$onfield";
-    //}
 
-    // Updates the field
-    
-    
-    /*
-    final field = model.field;
-    for (int row = 0; row < field.length; row++) {
-      for (int col = 0; col < field[row].length; col++) {
-        
-      
-          gamefield[col][row].classes.clear();
-          if (field[row][col]== #protectling) gamefield[col][row].classes.add('protectling');
-          else if (field[row][col] == #ffisch) gamefield[col][row].classes.add('ffisch');
-          else if (field[row][col] == #enemy) gamefield[col][row].classes.add('enemy');
-          else if (field[row][col] == #projectile) gamefield[col][row].classes.add('projectile');
-       
-      }
-      
-    }
-    */
     
     //update background scrolling \o/
     this.backgroundscroll=(this.backgroundscroll+1)%(gamesize*8*2);
     this.sbg.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     
-    
-    
-    
+    //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
     model.objects.forEach(
-            (o){
-              if(!o.dead){
-              for(int i = 0;i<o._sizex;i++){
-                for(int j = 0;j<o._sizey;j++){
-
-                  gamefield[o._position_x+i][o._position_y+j].classes.add(o.unitname+i.toString()+j.toString());                  
-                }
-                
-              }
-            }
-    }
+      (o){
+        if(!o.dead){
+          for(int i = 0;i<o._sizex;i++){
+            for(int j = 0;j<o._sizey;j++){
+              gamefield[o._position_x+i][o._position_y+j].classes.add(o.unitname+i.toString()+j.toString());                  
+            }      
+          }
+        }
+      }
     );
+    
   }
 
   /**
