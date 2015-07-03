@@ -205,38 +205,38 @@ table{
 }
 
 .enemy00 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy00.png');
 }
 
 .enemy01 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy10.png');
 }
 
 .enemy02 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy20.png');
 }
 
 
 .enemy10 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy01.png');
 }
 
 .enemy11 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy11.png');
 }
 
 .enemy12 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy21.png');
 }
 
 .enemy20 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy02.png');
 }
 
 .enemy21 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy12.png');
 }
 
 .enemy22 {
-  background-color: red !important;
+  background-image: url('img/enemy/enemy22.png');
 }
