@@ -25,14 +25,14 @@ class EnemyGenerator extends Generator {
       bool founddead=false;
       _enemies.forEach((f){
         if(f.dead && !founddead){
-          f.setposition(gamesize-f._sizex,_random.nextInt(60));
+          f.setposition(gamesize-f._sizex,_random.nextInt(gamesize-f._sizey));
           f.dead=false;
           founddead=true;
         }
       });
       if(!founddead){
         Enemy enemy = new Enemy(_game);
-        enemy.setposition(60,_random.nextInt(60));
+        enemy.setposition(gamesize-enemy._sizex,_random.nextInt(gamesize-enemy._sizey));
         _enemies.add(enemy);
       }
     }
