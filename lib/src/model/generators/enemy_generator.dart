@@ -49,7 +49,7 @@ class EnemyGenerator extends Generator {
         _game._score+=1;
         _game._ffisch.bullets.remove(p);             
       }
-      if(p._position_x>=gamesize-1){
+      if(p._position_x>=gamesize-p._sizex){
         p.die();
         _game._ffisch.bullets.remove(p);
       }       
