@@ -30,6 +30,7 @@ class GameView {
   
   final HtmlElement sbg = querySelector('#snakegame');
   final HtmlElement sbg2 = querySelector('#scrollbg');
+  final HtmlElement mbg = querySelector('#main_background');
   /**
    * Element with id '#gameover' of the DOM tree.
    * Used to indicate that a game is over.
@@ -53,7 +54,7 @@ class GameView {
    */
   HtmlElement get startButton => querySelector('#start');
   
-  int backgroundscroll=0;
+  int backgroundscroll=0,mainbackgroundscroll=0;
 
   void update(RaumffischGame model) {
     
@@ -66,8 +67,11 @@ class GameView {
     
     //update background scrolling \o/
     this.backgroundscroll=(this.backgroundscroll+2)%(gamesize*8*2);
+    this.mainbackgroundscroll++;
+    
     this.sbg.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
+    this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll/4).round().toString()+"px 0";
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});

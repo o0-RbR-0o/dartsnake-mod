@@ -6,7 +6,6 @@ abstract class Bullet extends Movable_Object{
   int _sizey;
   int _damage;
   int _stability;
-  int _shot_frequency;
   Bullet(_game) : super(_game);      
   void move();
 }
@@ -17,7 +16,6 @@ class Projectile extends Movable_Object implements Bullet{
   int _sizey = 1;
   int _damage=1;
   int _stability=1;
-  int _shot_frequency=4;
   
   Projectile(_game) : super(_game){
     unitname = "projectile";
@@ -25,6 +23,7 @@ class Projectile extends Movable_Object implements Bullet{
   void move(){
     this.moveright();
   }
-  
 }
+
+
 

@@ -18,7 +18,7 @@ class EnemyGenerator extends Generator {
       e.moveleft(); 
     });
   
-    _game._ffisch.projectiles.forEach((p){
+    _game._ffisch.bullets.forEach((p){
       p.move();p.move();
     });
     if(_random.nextInt(_level._enemy_frequency)==0){
@@ -42,16 +42,16 @@ class EnemyGenerator extends Generator {
       if(e.detectCollisonWith(_game.protectling) && !e.dead){
         _game.protectling.die();
     }
-    List pi = _game._ffisch.projectiles.toList();
+    List pi = _game._ffisch.bullets.toList();
     pi.forEach((p){
       if(e.detectCollisonWith(p) && p.dead == false && e.dead ==false){
         e.die();
         _game._score+=1;
-        _game._ffisch.projectiles.remove(p);             
+        _game._ffisch.bullets.remove(p);             
       }
       if(p._position_x>=gamesize-1){
         p.die();
-        _game._ffisch.projectiles.remove(p);
+        _game._ffisch.bullets.remove(p);
       }       
     }); 
     if(e._position_x<=0){

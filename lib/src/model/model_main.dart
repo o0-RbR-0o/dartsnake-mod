@@ -58,7 +58,7 @@ class RaumffischGame {
   RaumffischGame(this._size) {
     start();
 
-    _ffisch = new Ffisch(this);
+    _ffisch = new Ffisch(this,new StandardWeapon(this,8));
     protectling = new Protectling(this);
     protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
     _enemyGenerator = new EnemyGenerator(new Level.fromJSONurl("levels/level1.json"), this);
@@ -100,7 +100,7 @@ class RaumffischGame {
     objects.add(protectling);
     objects.add(_ffisch);
     objects.addAll(_enemyGenerator._enemies);
-    objects.addAll(_ffisch.projectiles);
+    objects.addAll(_ffisch.bullets);
     return objects;
   }
   

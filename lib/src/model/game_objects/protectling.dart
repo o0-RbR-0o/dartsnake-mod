@@ -11,9 +11,7 @@ class Protectling extends Movable_Object{
   }
   
   move(int period){
- 
 
-      
     if(_position_y==gamesize-_sizey-1){
       moveup();
       moveleft();

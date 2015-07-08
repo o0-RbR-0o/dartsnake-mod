@@ -10,9 +10,10 @@ part 'src/model/parents/movable_object.dart';
 part 'src/model/parents/generator.dart';
 
 part 'src/model/game_objects/protectling.dart';
-part 'src/model/game_objects/projectile.dart';
+part 'src/model/game_objects/bullets.dart';
 part 'src/model/game_objects/ffisch.dart';
 part 'src/model/game_objects/enemy.dart';
+part 'src/model/game_objects/weapons.dart';
 part 'src/model/generators/enemy_generator.dart';
 part 'src/model/generators/protectling_generator.dart';
 part 'src/model/parents/level.dart';

@@ -68,7 +68,8 @@ a {
 /* Spielbrett */
 body {
   height:100%;
-  background-image: url('img/space.jpg');
+  background-color:#222222;
+  //background-image: url('img/space.jpg');
   background-position: top left;
   margin: 0px;
   padding: 0px;
@@ -80,7 +81,7 @@ body {
 
 table{
   border-collapse:collapse;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   background-image:url('img/starfield2.png');
   border:1px solid white;
   
@@ -90,6 +91,19 @@ table{
   border-collapse:collapse;
   background-image:url('img/starfield.png');
   background-position-x:55px;
+  border:0px solid green;
+  margin:auto;
+  padding:auto;
+  max-width:640px;
+  max-height:640px;
+
+  
+}
+
+#main_background{
+  border-collapse:collapse;
+  background-image:url('img/space.jpg');
+  background-position-x:0px;
   border:0px solid green;
   margin:auto;
   padding:auto;
