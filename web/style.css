@@ -218,6 +218,40 @@ table{
   background-position: left top;
 }
 
+.bigprojectile00 {
+  background-image: url('img/bigbullet.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 0px 0px;
+}
+
+.bigprojectile01 {
+  background-image: url('img/bigbullet.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 0px 8px;
+}
+
+.bigprojectile10 {
+  background-image: url('img/bigbullet.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 8px 0px;
+}
+
+.bigprojectile11 {
+  background-image: url('img/bigbullet.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 8px 8px;
+}
+
+
+
 .enemy00 {
   background-image: url('img/enemy/enemy00.png');
 }

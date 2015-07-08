@@ -73,8 +73,12 @@ class GameController {
         if(mkc.isPressed(KeyCode.DOWN)  )
           game.ffisch.movedown(); 
         //Feuern
-        if(mkc.isPressed(KeyCode.SPACE) )
+        if(mkc.isPressed(KeyCode.SPACE) ){
           game.ffisch.shoot();/**/ 
+        }
+        else{
+          game._ffisch._current_weapon.setShotFreqCount(0);
+        }
         //Spiel anhalten
         if(mkc.isPressed( KeyCode.PAUSE));/**/ 
         //PowerUp benutzen
