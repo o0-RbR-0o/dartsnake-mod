@@ -195,6 +195,199 @@ table{
 }
 
 
+.neuffisch00 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: 0px 0px ;
+}
+.neuffisch10 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -8px 0px;
+}
+.neuffisch20 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -16px 0px;
+}
+.neuffisch30 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -24px 0px;
+}
+.neuffisch40 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -32px 0px;
+}
+.neuffisch50 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -40px 0px;
+}
+.neuffisch60 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -48px 0px;
+}
+.neuffisch70 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -56px 0px;
+}
+.neuffisch01 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: 0px -8px;
+}
+.neuffisch11 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -8px -8px;
+}
+.neuffisch21 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -16px -8px;
+}
+.neuffisch31 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -24px -8px;
+}
+.neuffisch41 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -32px -8px;
+}
+.neuffisch51 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -40px -8px;
+}
+.neuffisch61 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -48px -8px;
+}
+.neuffisch71 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -56px -8px;
+}
+.neuffisch02 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: 0px -16px;
+}
+.neuffisch12 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -8px -16px;
+}
+.neuffisch22 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -16px -16px;
+}
+.neuffisch32 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -24px -16px;
+}
+.neuffisch42 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -32px -16px;
+}
+.neuffisch52 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -40px -16px;
+}
+.neuffisch62 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -48px -16px;
+}
+.neuffisch72 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -56px -16px;
+}
+.neuffisch03 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:  0px -24px;
+}
+.neuffisch13 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -8px -24px;
+}
+.neuffisch23 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -16px -24px;
+}
+.neuffisch33 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -24px -24px;
+}
+.neuffisch43 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -32px -24px;
+}
+.neuffisch53 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -40px -24px;
+}
+.neuffisch63 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -48px -24px;
+}
+.neuffisch73 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position: -56px -24px;
+}
+.neuffisch04 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:0px -32px;
+}
+.neuffisch14 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-8px -32px ;
+}
+.neuffisch24 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-16px -32px ;
+}
+.neuffisch34 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-24px -32px ;
+}
+.neuffisch44 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-32px -32px ;
+}
+.neuffisch54 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-40px -32px ;
+}
+.neuffisch64 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-48px -32px ;
+}
+.neuffisch74 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-56px -32px ;
+}
+.neuffisch05 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:0px -40px ;
+}
+.neuffisch15 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-8px -40px ;
+}
+.neuffisch25 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-16px -40px ;
+}
+.neuffisch35 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-24px -40px ;
+}
+.neuffisch45 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-32px -40px ;
+}
+.neuffisch55 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-40px -40px ;
+}
+.neuffisch65 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-48px -40px ;
+}
+.neuffisch75 {
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-position:-56px -40px ;
+}
+
 .protectling {
   background-color: green !important;
   

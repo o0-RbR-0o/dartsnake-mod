@@ -4,14 +4,14 @@ part of raumffisch;
 class Ffisch extends Movable_Object{
   int _powerups;
   int _lifes;
-  int _sizex = 4;
-  int _sizey = 3;
+  int _sizex = 8;
+  int _sizey = 6;
   Weapon _current_weapon;
   
   List<Bullet> bullets = new List<Bullet>();
   
   Ffisch(_game,this._current_weapon):super(_game){
-    unitname = "ffisch";
+    unitname = "neuffisch";
     
     final s = _game.size;
      this._position_y =  s ~/2;
