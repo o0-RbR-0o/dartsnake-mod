@@ -474,6 +474,135 @@ table{
   background-position: 8px 8px;
 }
 
+//Tiles for img/kraken.png generated with Odysseeanemone
+.enemykraken00{
+  background-image:url(img/kraken.png);
+  background-position: -0px -0px;
+}
+.enemykraken10{
+  background-image:url(img/kraken.png);
+  background-position: -8px -0px;
+}
+.enemykraken20{
+  background-image:url(img/kraken.png);
+  background-position: -16px -0px;
+}
+.enemykraken30{
+  background-image:url(img/kraken.png);
+  background-position: -24px -0px;
+}
+.enemykraken40{
+  background-image:url(img/kraken.png);
+  background-position: -32px -0px;
+}
+.enemykraken50{
+  background-image:url(img/kraken.png);
+  background-position: -40px -0px;
+}
+.enemykraken60{
+  background-image:url(img/kraken.png);
+  background-position: -48px -0px;
+}
+.enemykraken70{
+  background-image:url(img/kraken.png);
+  background-position: -56px -0px;
+}
+.enemykraken01{
+  background-image:url(img/kraken.png);
+  background-position: -0px -8px;
+}
+.enemykraken11{
+  background-image:url(img/kraken.png);
+  background-position: -8px -8px;
+}
+.enemykraken21{
+  background-image:url(img/kraken.png);
+  background-position: -16px -8px;
+}
+.enemykraken31{
+  background-image:url(img/kraken.png);
+  background-position: -24px -8px;
+}
+.enemykraken41{
+  background-image:url(img/kraken.png);
+  background-position: -32px -8px;
+}
+.enemykraken51{
+  background-image:url(img/kraken.png);
+  background-position: -40px -8px;
+}
+.enemykraken61{
+  background-image:url(img/kraken.png);
+  background-position: -48px -8px;
+}
+.enemykraken71{
+  background-image:url(img/kraken.png);
+  background-position: -56px -8px;
+}
+.enemykraken02{
+  background-image:url(img/kraken.png);
+  background-position: -0px -16px;
+}
+.enemykraken12{
+  background-image:url(img/kraken.png);
+  background-position: -8px -16px;
+}
+.enemykraken22{
+  background-image:url(img/kraken.png);
+  background-position: -16px -16px;
+}
+.enemykraken32{
+  background-image:url(img/kraken.png);
+  background-position: -24px -16px;
+}
+.enemykraken42{
+  background-image:url(img/kraken.png);
+  background-position: -32px -16px;
+}
+.enemykraken52{
+  background-image:url(img/kraken.png);
+  background-position: -40px -16px;
+}
+.enemykraken62{
+  background-image:url(img/kraken.png);
+  background-position: -48px -16px;
+}
+.enemykraken72{
+  background-image:url(img/kraken.png);
+  background-position: -56px -16px;
+}
+.enemykraken03{
+  background-image:url(img/kraken.png);
+  background-position: -0px -24px;
+}
+.enemykraken13{
+  background-image:url(img/kraken.png);
+  background-position: -8px -24px;
+}
+.enemykraken23{
+  background-image:url(img/kraken.png);
+  background-position: -16px -24px;
+}
+.enemykraken33{
+  background-image:url(img/kraken.png);
+  background-position: -24px -24px;
+}
+.enemykraken43{
+  background-image:url(img/kraken.png);
+  background-position: -32px -24px;
+}
+.enemykraken53{
+  background-image:url(img/kraken.png);
+  background-position: -40px -24px;
+}
+.enemykraken63{
+  background-image:url(img/kraken.png);
+  background-position: -48px -24px;
+}
+.enemykraken73{
+  background-image:url(img/kraken.png);
+  background-position: -56px -24px;
+}
 
 
 .enemy00 {

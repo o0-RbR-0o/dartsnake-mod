@@ -98,7 +98,7 @@ class RaumffischGame {
 
   List<Movable_Object> get objects {
     List<Movable_Object> objects = new List<Movable_Object>(_enemyGenerator._enemies.length+_ffisch.bullets.length+2);
-    print(objects.length);
+    //print(objects.length);
     objects[0]=protectling;
     objects[1]=_ffisch;
     objects.setAll(2,_enemyGenerator._enemies);
