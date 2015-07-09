@@ -39,9 +39,12 @@ class Movable_Object{
   }
   
   //Moves the Movable_Object left in sin y 1px;
-   void moveright_sin(int amplitude,int wavelength){
+   void moveright_sin(int amplitude,int wavelength, bool updown){
      if(this._position_x < (this._game._size-this._sizex)){
-      this._position_y=this._initial_y+(sin((this._position_x-this._initial_x)/wavelength)*amplitude).round();
+       if(updown)
+        this._position_y=this._initial_y+(sin((this._position_x-this._initial_x)/wavelength)*amplitude).round();
+       else
+        this._position_y=this._initial_y-(sin((this._position_x-this._initial_x)/wavelength)*amplitude).round();
      this._position_y= this._position_y<0?0:this._position_y;
      this._position_y= this._position_y>(gamesize-1)?(gamesize-1):this._position_y;
        this._position_x++;

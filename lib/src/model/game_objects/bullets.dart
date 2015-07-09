@@ -58,6 +58,79 @@ class Bigprojectile extends Projectile{
   }
 }
 
+class SineProjectile0 extends Projectile{
+    int _sinecount=0;
+  SineProjectile0(_game,speedx,speedy) : super(_game,speedy,speedy){
+      this.unitname="bigprojectile";
+      this._sizex=2;
+      this._sizey=2;
+      this._damage = 3;
+      this._sinecount=0;
+    }
+  void move(){
+      if(this._speedx>0){
+        for(var i=0;i<this._speedx;i++){
+          this.moveright_sin(3, 8, true);
+        }
+        
+      }
+      else{
+        for(var i=0;i<this._speedx.abs();i++){
 
+          this.moveleft(); 
+        }
+      }
+      
+      if(this._speedy>0){
+        for(var i=0;i<this._speedy;i++){
+
+          this.movedown(); 
+        }
+      }
+      else{
+        for(var i=0;i<this._speedy.abs();i++){
+
+          this.moveup();
+        }
+      }
+      this._sinecount++;
+    }
+  
+}
+
+class SineProjectile1 extends SineProjectile0{
+  SineProjectile1(_game,speedx,speedy) : super(_game,speedy,speedy){
+    
+    this.unitname="anotherbigprojectile"; 
+  }
+  void move(){
+        if(this._speedx>0){
+          for(var i=0;i<this._speedx;i++){
+            this.moveright_sin(3, 8, false);
+          }
+          
+        }
+        else{
+          for(var i=0;i<this._speedx.abs();i++){
+
+            this.moveleft(); 
+          }
+        }
+        
+        if(this._speedy>0){
+          for(var i=0;i<this._speedy;i++){
+
+            this.movedown(); 
+          }
+        }
+        else{
+          for(var i=0;i<this._speedy.abs();i++){
+
+            this.moveup();
+          }
+        }
+        this._sinecount++;
+      }
+}
 
 

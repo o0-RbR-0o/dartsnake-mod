@@ -474,6 +474,47 @@ table{
   background-position: 8px 8px;
 }
 
+
+
+.anotherbigprojectile00 {
+  background-image: url('img/bigbullet_offset2.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 0px 0px;
+}
+
+.anotherbigprojectile01 {
+  background-image: url('img/bigbullet_offset2.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 0px 8px;
+}
+
+.anotherbigprojectile10 {
+  background-image: url('img/bigbullet_offset2.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 8px 0px;
+}
+
+.anotherbigprojectile11 {
+  background-image: url('img/bigbullet_offset2.gif');
+  //background-color: blue !important;
+
+  
+  background-position: 8px 8px;
+}
+
+
+
+
+
+
+
+
 //Tiles for img/kraken.png generated with Odysseeanemone
 .enemykraken00{
   background-image:url(img/kraken.png);
