@@ -48,16 +48,15 @@ class Projectile extends Movable_Object implements Bullet{
   }
 }
 
-
-  class Bigprojectile extends Projectile{
-    Bigprojectile(_game,speedx,speedy) : super(_game,speedy,speedy){
-      this.unitname="bigprojectile";
-      this._sizex=2;
-      this._sizey=2;
-      this._damage = 3;
-    }
-    
+//Class for a big projectile (bigger + more damage).
+class Bigprojectile extends Projectile{
+  Bigprojectile(_game,speedx,speedy) : super(_game,speedy,speedy){
+    this.unitname="bigprojectile";
+    this._sizex=2;
+    this._sizey=2;
+    this._damage = 3;
   }
+}
 
 
 
