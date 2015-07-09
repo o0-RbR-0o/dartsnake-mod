@@ -38,7 +38,8 @@ class EnemyGenerator extends Generator {
       if(e.detectCollisonWith(_game.protectling) && !e.dead){
         _game.protectling.die();
     }
-    List pi = _game._ffisch.bullets.toList();
+    List pi = _game._ffisch.bullets.toList(); //trick for a deep copy so we can iterate and remove. 
+                                              //Ordinary loop might be faster.
     pi.forEach((p){
       if(e.detectCollisonWith(p) && p.dead == false && e.dead ==false){
         e.take_damage(p._damage);

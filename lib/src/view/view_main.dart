@@ -18,16 +18,17 @@ class GameView {
    * Element with id '#welcome' of the DOM tree.
    * Shown only if game is not running.
    */
-  final welcome = querySelector("#welcome");
-  final score = querySelector("#score");
+  final HtmlElement welcome = querySelector("#welcome");
+  final HtmlElement score = querySelector("#score");
   
-
+  final HtmlElement intro_overlay = querySelector("#intro_overlay");
+ 
 
   /**
    * Element with id '#snakegame' of the DOM tree.
    * Used to visualize the field of a [RaumffischGame] as a HTML table.
    */
-  final game = querySelector('#snakegame');
+  final HtmlElement game = querySelector('#snakegame');
 
   
   final HtmlElement sbg = querySelector('#snakegame');
@@ -54,7 +55,7 @@ class GameView {
   /**
    * Start button of the game.
    */
-  HtmlElement get startButton => querySelector('#start');
+  HtmlElement get startButton => querySelector('#intro_overlay');
   
   int backgroundscroll=0,mainbackgroundscroll=0;
 
@@ -73,7 +74,7 @@ class GameView {
     
     this.sbg.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
-    this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll/4).round().toString()+"px 0";
+    this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll/4).toInt().toString()+"px 0";
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
@@ -97,11 +98,10 @@ class GameView {
    * into the [game] element of the DOM tree.
    */
   void generateField(RaumffischGame model) {
-    
     gamefield = new List<List<Element>>();
     final field = model.field;
     
-  
+    
 
     String table = "";
     for (int row = 0; row < field.length; row++) {

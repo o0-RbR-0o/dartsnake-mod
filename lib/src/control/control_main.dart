@@ -22,7 +22,7 @@ class GameController {
   /**
    * Referencing the presenting view.
    */
-  final view = new GameView();
+  final GameView view = new GameView();
   
   
   int period = 0;
@@ -37,7 +37,8 @@ class GameController {
   GameController() {
 
     // New game is started by user
-    view.startButton.onClick.listen((_) {
+    view.intro_overlay.onClick.listen((_) {
+      view.intro_overlay.style.setProperty('display', "none");
       if (updateTrigger != null) updateTrigger.cancel();
       game = new RaumffischGame(gamesize);
       view.generateField(game);
@@ -47,7 +48,7 @@ class GameController {
       audio.muted=false;
       audio.play();
       game.start();
-      view.update(game);
+      //view.update(game);
     });
 
     // Getting inputs:
