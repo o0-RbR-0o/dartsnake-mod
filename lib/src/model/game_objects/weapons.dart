@@ -1,5 +1,6 @@
 part of raumffisch;
 
+//Abstract class to implement a weapon
 abstract class Weapon{  
   final RaumffischGame _game;
   int _sfreq_counter;
@@ -10,6 +11,7 @@ abstract class Weapon{
   void setShotFreqCount(int s);
 }
 
+//StandardWeapon - Parent Class of all Weapons (Doesn't implement Weapon to avoid confusion)
 class StandardWeapon{
   final RaumffischGame _game;
    int _sfreq_counter=0;
@@ -23,7 +25,7 @@ class StandardWeapon{
 }
 
 
-
+//Weapon shooting one small bullet right.
 class OneShot extends StandardWeapon implements Weapon{  
   OneShot(_game, _shot_frequency) : super(_game,_shot_frequency);
   
@@ -39,6 +41,7 @@ class OneShot extends StandardWeapon implements Weapon{
   }
 }
 
+//Weapon shooting 2 up/down origin toggleing small bullets right.
 class DoubleShot extends StandardWeapon implements Weapon{  
   DoubleShot(_game, _shot_frequency) : super(_game,_shot_frequency);
   
@@ -61,6 +64,7 @@ class DoubleShot extends StandardWeapon implements Weapon{
   }
 }
 
+//Weapon shooting one big bullet right while shooting 2 small bullets diagonal up+right and down+right every second shot
 class DiagonalShotWithFront extends StandardWeapon implements Weapon{  
   DiagonalShotWithFront(_game, _shot_frequency) : super(_game,_shot_frequency);
   
