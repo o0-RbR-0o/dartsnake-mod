@@ -5,5 +5,6 @@ Raumffisch\[NoCanvas\] is a fork of Dartsnake by Nane Kratzke which implements a
 The project itself is a semester project for the class "Webtechnologien" at the University of Applied Sciences Lübeck.
 
 
-Dartsnake and the original readme file can be found here:
-[dartsname]: https://github.com/nkratzke/dartsnake
+Dartsnake and the original readme file can be found [here][dartsnake].
+
+[dartsnake]: https://github.com/nkratzke/dartsnake
