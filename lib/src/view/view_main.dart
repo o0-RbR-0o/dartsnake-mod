@@ -20,6 +20,8 @@ class GameView {
    */
   final welcome = querySelector("#welcome");
   final score = querySelector("#score");
+  
+
 
   /**
    * Element with id '#snakegame' of the DOM tree.
@@ -95,8 +97,11 @@ class GameView {
    * into the [game] element of the DOM tree.
    */
   void generateField(RaumffischGame model) {
+    
     gamefield = new List<List<Element>>();
     final field = model.field;
+    
+  
 
     String table = "";
     for (int row = 0; row < field.length; row++) {

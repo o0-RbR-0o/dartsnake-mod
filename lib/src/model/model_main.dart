@@ -16,7 +16,7 @@ class RaumffischGame {
   int period = 0;
   
   EnemyGenerator _enemyGenerator;
-
+  ProtectlingGenerator _protectlingGenerator;
   // List of mice.
 
   
@@ -62,6 +62,7 @@ class RaumffischGame {
     protectling = new Protectling(this);
     protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
     _enemyGenerator = new EnemyGenerator(new Level.fromJSONurl("levels/level1.json"), this);
+    _protectlingGenerator = new ProtectlingGenerator(new Level.fromJSONurl("levels/level1.json"), this);
     stop();
   }
 
@@ -108,6 +109,7 @@ class RaumffischGame {
     this.period = period;
     if (running){
       _enemyGenerator.tick(period);
+      _protectlingGenerator.tick(period);
     }
   }
   int get size => _size;

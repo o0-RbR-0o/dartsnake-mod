@@ -54,6 +54,7 @@ class Projectile extends Movable_Object implements Bullet{
       this.unitname="bigprojectile";
       this._sizex=2;
       this._sizey=2;
+      this._damage = 3;
     }
     
   }

@@ -8,11 +8,7 @@ class EnemyGenerator extends Generator {
     
   }
   void tick (int period){
-    if(_game.protectling.dead == true){
-      _game.protectling.setposition((gamesize-1)~/2, gamesize-1-_game.protectling._sizey);
-      _game.protectling.dead = false;
-    }
-    _game.protectling.move(period);
+
     
     _enemies.forEach((e){
       e.moveleft(); 
@@ -45,8 +41,8 @@ class EnemyGenerator extends Generator {
     List pi = _game._ffisch.bullets.toList();
     pi.forEach((p){
       if(e.detectCollisonWith(p) && p.dead == false && e.dead ==false){
-        e.die();
-        _game._score+=1;
+        e.take_damage(p._damage);
+       
         _game._ffisch.bullets.remove(p);             
       }
       if(p._position_x>=gamesize-p._sizex){
