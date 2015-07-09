@@ -1,5 +1,5 @@
 name: raumffisch
-description: Dockerized Dart implementation of the famous Snake Game.
+description: Dockerized Raumffisch.
 dependencies:
   browser: any
   start: any
