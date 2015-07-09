@@ -1,11 +1,11 @@
 # Install a dart container for demonstration purposes.
 #
 # This file is hosted on github. Therefore you can start it in docker like this:
-# > docker build -t snakedart github.com/nkratzke/snakedart
-# > docker run -p 8080:3000 -d snakedart
+# > docker build -t dartsnake-mod github.com/o0-RbR-0o/dartsnake-mod
+# > docker run -p 8080:3000 -d dartsnake-mod
 
 FROM stackbrew/ubuntu:13.10
-MAINTAINER Nane Kratzke <nane@nkode.io>
+MAINTAINER RbR <>
 
 # Install Dart SDK. Do not touch this until you know what you are doing.
 # We do not install darteditor nor dartium because this is a server container.
