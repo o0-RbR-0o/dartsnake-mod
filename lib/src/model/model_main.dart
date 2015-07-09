@@ -8,7 +8,7 @@ part of raumffisch;
 class RaumffischGame {
 
   // The snake of the game.
-
+  List<Movable_Object> _objects = new List<Movable_Object>();
   Ffisch _ffisch;
   Protectling protectling;
   int _score = 0;
@@ -97,13 +97,14 @@ class RaumffischGame {
   }
 
   List<Movable_Object> get objects {
-    List<Movable_Object> objects = new List<Movable_Object>(_enemyGenerator._enemies.length+_ffisch.bullets.length+2);
-    //print(objects.length);
-    objects[0]=protectling;
-    objects[1]=_ffisch;
-    objects.setAll(2,_enemyGenerator._enemies);
-    objects.setAll(_enemyGenerator._enemies.length+2,_ffisch.bullets);
-    return objects;
+    
+    _objects.clear();
+    _objects.add(protectling);
+    _objects.add(_ffisch);
+    _objects.addAll(_enemyGenerator._enemies);
+    _objects.addAll(_ffisch.bullets);
+   
+    return _objects;
   }
   
   void update(int period) {
