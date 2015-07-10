@@ -98,7 +98,7 @@ class DiagonalShotWithFront extends StandardWeapon implements Weapon{
     if(this._sfreq_counter==0){
       Bullet p = new Projectile(_game,1,1); 
       Bullet p2 = new Projectile(_game,1,-1);
-      _game.eventSystem.shotfired=true;
+      
       p2.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)-1);
       p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)+1);
       
