@@ -50,7 +50,7 @@ class GameView {
    * Element with id '#reasons' of the DOM tree.
    * Used to indicate why the game entered the game over state.
    */
-  final reasons = querySelector('#reasons');
+  final Element message = querySelector('#message');
 
   /**
    * Element with id '#points' of the DOM tree.
@@ -69,9 +69,12 @@ class GameView {
     
     score.setInnerHtml(model._score.toString());
     
-    welcome.style.display = model.stopped ? "block" : "none";
+    //welcome.style.display = model.stopped ? "block" : "none";
+    if(model._gameOver){
+      message.innerHtml = "You've died. Your score: "+ model._score.toString();
+      
+    }
 
-    reasons.innerHtml = "";
 
     
     //update background scrolling \o/
