@@ -56,7 +56,7 @@ List<Bullet> shoot(){
     p2.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
     bl.add(p);
     bl.add(p2);
-    _game.eventSystem.shotfired=true;
+    _game.eventSystem.shot2fired=true;
   }
   this._sfreq_counter=(this._sfreq_counter+1)%this._shot_frequency;
   return bl;
@@ -108,7 +108,7 @@ class DiagonalShotWithFront extends StandardWeapon implements Weapon{
     if(this._sfreq_counter==0 || this._sfreq_counter==(this._shot_frequency/2)){
       Bullet p3 = new Bigprojectile(_game,1,0);
       p3.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
-      _game.eventSystem.shotfired=true;
+      _game.eventSystem.shot3fired=true;
       bl.add(p3);
     }
     this._sfreq_counter=(this._sfreq_counter+1)%this._shot_frequency;

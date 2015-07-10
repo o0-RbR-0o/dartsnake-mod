@@ -757,3 +757,78 @@ table{
   background-image:url(img/powerup2.gif);
   background-position: -16px -16px;
 }
+
+
+.powerupC00{
+  background-image:url(img/powerup3.gif);
+  background-position: 0px 0px;
+}
+.powerupC10{
+  background-image:url(img/powerup3.gif);
+  background-position: -8px -0px;
+}
+.powerupC20{
+  background-image:url(img/powerup3.gif);
+  background-position: -16px -0px;
+}
+.powerupC01{
+  background-image:url(img/powerup3.gif);
+  background-position: -0px -8px;
+}
+.powerupC11{
+  background-image:url(img/powerup3.gif);
+  background-position: -8px -8px;
+}
+.powerupC21{
+  background-image:url(img/powerup3.gif);
+  background-position: -16px -8px;
+}
+.powerupC02{
+  background-image:url(img/powerup3.gif);
+  background-position: -0px -16px;
+}
+.powerupC12{
+  background-image:url(img/powerup3.gif);
+  background-position: -8px -16px;
+}
+.powerupC22{
+  background-image:url(img/powerup3.gif);
+  background-position: -16px -16px;
+}
+
+.powerupD00{
+  background-image:url(img/powerup4.gif);
+  background-position: 0px 0px;
+}
+.powerupD10{
+  background-image:url(img/powerup4.gif);
+  background-position: -8px -0px;
+}
+.powerupD20{
+  background-image:url(img/powerup4.gif);
+  background-position: -16px -0px;
+}
+.powerupD01{
+  background-image:url(img/powerup4.gif);
+  background-position: -0px -8px;
+}
+.powerupD11{
+  background-image:url(img/powerup4.gif);
+  background-position: -8px -8px;
+}
+.powerupD21{
+  background-image:url(img/powerup4.gif);
+  background-position: -16px -8px;
+}
+.powerupD02{
+  background-image:url(img/powerup4.gif);
+  background-position: -0px -16px;
+}
+.powerupD12{
+  background-image:url(img/powerup4.gif);
+  background-position: -8px -16px;
+}
+.powerupD22{
+  background-image:url(img/powerup4.gif);
+  background-position: -16px -16px;
+}

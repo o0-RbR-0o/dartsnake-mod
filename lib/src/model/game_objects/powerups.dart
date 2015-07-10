@@ -12,7 +12,7 @@ abstract class Powerup extends Movable_Object {
 class SineDoubleShotPowerup extends Powerup{
 
   SineDoubleShotPowerup (_game):super(_game){
-    this.unitname = "powerup_a_";
+    this.unitname = "powerupD";
     
   }
   void apply(Ffisch ffisch){
@@ -38,7 +38,7 @@ class DoubleShotPowerup extends Powerup{
 class OneShotPowerup extends Powerup{
 
   OneShotPowerup(_game):super(_game){
-    this.unitname = "powerup_a_";
+    this.unitname = "powerupC";
     
   }
   void apply(Ffisch ffisch){

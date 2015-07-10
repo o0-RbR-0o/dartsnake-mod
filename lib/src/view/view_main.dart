@@ -41,6 +41,8 @@ class GameView {
   final gameover = querySelector('#gameover');
   
   final AudioElement soundShot1 = querySelector('#shotfire1');
+  final AudioElement soundShot2 = querySelector('#shotfire2');
+  final AudioElement soundShot3 = querySelector('#shotfire3');
   final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
   final AudioElement soundPowerup1 = querySelector('#powerup1');
   
@@ -89,6 +91,20 @@ class GameView {
       this.soundShot1.muted=false;
       this.soundShot1.loop=false;
     }
+    if(model.eventSystem.shot2fired){
+          this.soundShot2.load();
+          this.soundShot2.currentTime=0;
+          this.soundShot2.play();
+          this.soundShot2.muted=false;
+          this.soundShot2.loop=false;
+        }
+    if(model.eventSystem.shot3fired){
+             this.soundShot3.load();
+             this.soundShot3.currentTime=0;
+             this.soundShot3.play();
+             this.soundShot3.muted=false;
+             this.soundShot3.loop=false;
+           }
     if(model.eventSystem.enemydied){
           this.soundEnemyDie1.load();
           this.soundEnemyDie1.currentTime=0;
