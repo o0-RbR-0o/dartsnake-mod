@@ -23,6 +23,7 @@ class Enemy extends Movable_Object with Damage_taker{
     if(_life <= 0){
       _game._score+=1;
       die();
+      _game.eventSystem.enemydied=true;
       
     }
   }

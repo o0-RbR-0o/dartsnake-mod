@@ -20,7 +20,7 @@ class RaumffischGame {
   PowerupGenerator _powerupGenerator;
   // List of mice.
 
-  
+  EventSystem eventSystem=new EventSystem();
 
   var _protectlings = [];
 

@@ -39,7 +39,11 @@ class GameView {
    * Used to indicate that a game is over.
    */
   final gameover = querySelector('#gameover');
-
+  
+  final AudioElement soundShot1 = querySelector('#shotfire1');
+  final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
+  final AudioElement soundPowerup1 = querySelector('#powerup1');
+  
   /**
    * Element with id '#reasons' of the DOM tree.
    * Used to indicate why the game entered the game over state.
@@ -75,6 +79,30 @@ class GameView {
     this.sbg.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll~/4).toString()+"px 0";
+    
+    if(model.eventSystem.shotfired){
+      this.soundShot1.load();
+      this.soundShot1.currentTime=0;
+      this.soundShot1.play();
+      this.soundShot1.muted=false;
+      this.soundShot1.loop=false;
+    }
+    if(model.eventSystem.enemydied){
+          this.soundEnemyDie1.load();
+          this.soundEnemyDie1.currentTime=0;
+          this.soundEnemyDie1.play();
+          this.soundEnemyDie1.muted=false;
+          this.soundEnemyDie1.loop=false;
+        }
+    if(model.eventSystem.powerupcollected){
+          this.soundPowerup1.load();
+          this.soundPowerup1.currentTime=0;
+          this.soundPowerup1.play();
+          this.soundPowerup1.muted=false;
+          this.soundPowerup1.loop=false;
+        }
+    
+    model.eventSystem.resetevents();
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});

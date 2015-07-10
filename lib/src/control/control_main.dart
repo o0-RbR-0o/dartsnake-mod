@@ -47,6 +47,7 @@ class GameController {
       AudioElement audio = querySelector('#audiop');
       audio.muted=false;
       audio.play();
+      audio.volume=0.4;
       game.start();
       //view.update(game);
     });
