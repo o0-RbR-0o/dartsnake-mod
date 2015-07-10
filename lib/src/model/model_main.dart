@@ -104,15 +104,15 @@ class RaumffischGame {
   }
   
   void applylevelUp(){
-    if(_level.levelUp()){
+    _level.levelUp();
       
-    }
+    
   }
   
   void update(int period) {
     this.period = period;
     if (running){
-      if(_level._length*10 > period){
+      if(period > _level._length){
         applylevelUp();
       }
       _enemyGenerator.tick(period);

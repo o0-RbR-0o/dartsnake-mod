@@ -4,7 +4,7 @@ class Level{
   int _powerup_frequency = 1;
   int _enemy_frequency = 1;
   int _length =1;
-  int _level = 0;
+  int _level = -1;
   var jsonData = null;
   bool levelLoaded=false;
   
@@ -27,7 +27,7 @@ class Level{
   
 
   Level.fromJSONurl(String f){
-    String json=r'[{"level": {"length": 500,"enemy_frequency": 40,"powerup_frequency": 96006}},{"level": {    "length": 500,    "enemy_frequency": 40,    "powerup_frequency": 9}}]';
+    String json=r'[{"level": {"length": 500,"enemy_frequency": 10,"powerup_frequency": 96006}},{"level": {    "length": 5000,    "enemy_frequency": 40,    "powerup_frequency": 9}}]';
     this.fromJSONstring(json);
   } 
   
@@ -38,7 +38,10 @@ class Level{
 
   
   bool levelUp(){
+    if(jsonData.length>this._level){
     this._level++;
+    print(_level.toString());
+    }
     return level(_level);
   }
   bool level(int i){
