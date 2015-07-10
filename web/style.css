@@ -38,15 +38,7 @@
   border:0px;
 }
 
-#lifes{
-  display:inline-block;
-  height:16px;
-  margin:0px; 
-  padding: 0px 0px 0px 0px;
-  border-radius:5px;
-  text-align:left;
-  overflow:hidden;
-}
+
 
 
 a { 
@@ -165,7 +157,12 @@ table{
 }
 
 
-
+#ffischlifes{
+  width:320px;
+  height:48px;
+  background-image: url('img/neuffisch/raumffisch_sprite.png');
+  background-repeat:repeat;
+}
 
 
 .ffisch00 {
