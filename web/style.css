@@ -153,15 +153,25 @@ table{
   padding:0px;
   width: 8px;
   height: 8px;
+  clear:both;
   //background: rgba(255, 255, 255, 0.1);
+}
+#scorebox{
+
+  
 }
 
 
+
 #ffischlifes{
+
   width:320px;
   height:48px;
   background-image: url('img/neuffisch/raumffisch_sprite.png');
   background-repeat:repeat;
+
+  
+
 }
 
 

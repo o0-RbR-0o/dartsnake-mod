@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raumffisch[NoCanvas]</title>
-    <link rel="stylesheet" type="text/css" href="style.css">  
-  </head>
- 
-  <body>
-    
-    <div class="container">
-      <div id="intro_overlay">
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raumffisch[NoCanvas]</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="intro_overlay">
+
       <div id='welcome'>
         <span id="start">Start</span>
       </div>
-      
-      <div id='message' style="display:none">
+
+      <div id='message' style="display: none">
         <div id='gameover'></div>
         <div id='reasons'></div>
       </div>
-     </div>
-      <div id='main_background'>
-      <div id='scrollbg'>
-      <table id='snakegame'>
-      </table>
-      </div>
-      </div>
-      <div id="ffischlifes"></div>
-      <div style="width:640px; height:16px; padding: 0px 0px 0px 0px; border: 3px solid; border-radius:5px; text-align:left; overflow:hidden;">
-      
-        <div id="weapon-power"></div>
-        
-      </div>
-       <div><span id="score"></span></div>
-
-    <audio controls muted="true" loop id='audiop' style="display:none;">
-  <source src="audio/rbr_gamemusic1.ogg" type="audio/ogg" >
-    Your browser does not support the audio element.
-  </source>
-  </audio>
-  <audio controls muted="false" loop id='shotfire1' loop='false' style="display:none;">
-  <source src="audio/laser.wav" type="audio/ogg" >
-    Your browser does not support the audio element.
-  </source>
-  </audio>
-  <audio controls muted="false" loop id='enemydie1' loop='false' style="display:none;">
-  <source src="audio/enemydie1.wav" type="audio/ogg" >
-    Your browser does not support the audio element.
-  </source>
-
-    </audio>
-    <audio controls muted="false" loop id='powerup1' loop='false' style="display:none;">
-  <source src="audio/powerup1.wav" type="audio/ogg" >
-    Your browser does not support the audio element.
-  </source>
-
-    </audio>
     </div>
-    <script type='application/dart' src='ffischclient.dart'></script>
-    <script src='packages/browser/dart.js'></script>   
-  </body>
+    <div id='main_background'>
+      <div id='scrollbg'>
+        <table id='snakegame'>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div id="ffischlifes"></div>
+      <div id="scorebox">
+        <span id="score"></span>
+      </div>
+    </div>
+    <div
+      style="width: 640px; height: 16px; padding: 0px 0px 0px 0px; border: 3px solid; border-radius: 5px; text-align: left; overflow: hidden;">
+
+      <div id="weapon-power"></div>
+
+    </div>
+
+
+    <audio controls muted="true" loop id='audiop' style="display: none;">
+      <source src="audio/rbr_gamemusic1.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </source>
+    </audio>
+    <audio controls muted="false" loop id='shotfire1' loop='false'
+      style="display: none;">
+      <source src="audio/laser.wav" type="audio/ogg">
+    Your browser does not support the audio element.
+  </source>
+    </audio>
+    <audio controls muted="false" loop id='enemydie1' loop='false'
+      style="display: none;">
+      <source src="audio/enemydie1.wav" type="audio/ogg">
+    Your browser does not support the audio element.
+  </source>
+
+    </audio>
+    <audio controls muted="false" loop id='powerup1' loop='false'
+      style="display: none;">
+      <source src="audio/powerup1.wav" type="audio/ogg">
+    Your browser does not support the audio element.
+  </source>
+
+    </audio>
+  </div>
+  <script type='application/dart' src='ffischclient.dart'></script>
+  <script src='packages/browser/dart.js'></script>
+</body>
 </html>

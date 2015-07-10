@@ -15,6 +15,8 @@ class RaumffischGame {
   
   int period = 0;
   
+  Level _level;
+  
   EnemyGenerator _enemyGenerator;
   ProtectlingGenerator _protectlingGenerator;
   PowerupGenerator _powerupGenerator;
@@ -60,13 +62,15 @@ class RaumffischGame {
    */
   RaumffischGame(this._size) {
     start();
+    
+    _level = new Level.fromVariables(100, 40 , 2500);
 
     _ffisch = new Ffisch(this,new OneShot(this, 16));
     protectling = new Protectling(this);
     protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
-    _enemyGenerator = new EnemyGenerator(new Level.fromJSONurl("levels/level1.json"), this);
-    _protectlingGenerator = new ProtectlingGenerator(new Level.fromJSONurl("levels/level1.json"), this);
-    _powerupGenerator = new PowerupGenerator(new Level.fromJSONurl("levels/level1.json"), this);
+    _enemyGenerator = new EnemyGenerator(_level, this);
+    _protectlingGenerator = new ProtectlingGenerator(_level, this);
+    _powerupGenerator = new PowerupGenerator(_level, this);
     stop();
   }
 
@@ -99,9 +103,18 @@ class RaumffischGame {
     return _objects;
   }
   
+  void applylevelUp(){
+    if(!_level.levelUp()){
+      _gameOver = true;
+    }
+  }
+  
   void update(int period) {
     this.period = period;
     if (running){
+      if(_level._length < period){
+        applylevelUp();
+      }
       _enemyGenerator.tick(period);
       _protectlingGenerator.tick(period);
       _powerupGenerator.tick(period);

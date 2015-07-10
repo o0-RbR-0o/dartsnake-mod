@@ -43,10 +43,6 @@ class Ffisch extends Movable_Object{
     this._powerups-=anzahl;
   }
   
-  //Sets the amounts of powerups for the Ffisch
-  void setpowerups(int anzahl){
-    this._powerups=anzahl;
-  }
   
   void shoot(){
     this.bullets.addAll(this._current_weapon.shoot());
