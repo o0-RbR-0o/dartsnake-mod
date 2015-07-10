@@ -27,20 +27,13 @@ class Level{
   
 
   Level.fromJSONurl(String f){
-     HttpRequest.getString(f).then(this.fromJSONstring);
-     
-     
-     print(jsonData.toString());
-  }
-  
+    String json=r'[{"level": {"length": 500,"enemy_frequency": 40,"powerup_frequency": 96006}},{"level": {    "length": 500,    "enemy_frequency": 40,    "powerup_frequency": 9}}]';
+    this.fromJSONstring(json);
+  } 
   
   
   void fromJSONstring(String s){
-    
-    while(jsonData == null); //dirty, we know...
-    JSON.decode(s).then(this.jsonData);
-    
-
+    this.jsonData=JSON.decode(s);
   }
 
   
@@ -49,6 +42,7 @@ class Level{
     return level(_level);
   }
   bool level(int i){
+    if(jsonData.length>i){
     if(jsonData == null || jsonData[i] == null){
       return false;
     }else{
@@ -58,6 +52,6 @@ class Level{
       this._length=jsonData[i]['level']["length"];
       return true;
     }
-    
+    }
   }
 }

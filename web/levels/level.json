@@ -7,5 +7,10 @@
     "length": 500,
     "enemy_frequency": 40,
     "powerup_frequency": 9600
+}},
+{"level": {
+    "length": 5000,
+    "enemy_frequency": 40,
+    "powerup_frequency": 600
 }}
 ]
