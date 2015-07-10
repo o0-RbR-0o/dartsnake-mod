@@ -7,7 +7,7 @@ part of raumffisch;
 class GameView {
 
   List<List<Element>> gamefield;
-  final bool sound_on=false;
+  final bool sound_on=true;
   //This will show the players score
   final HtmlElement score = querySelector("#score");  
   
