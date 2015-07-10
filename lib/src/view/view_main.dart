@@ -74,7 +74,7 @@ class GameView {
     
     this.sbg.style.backgroundPosition=(-this.backgroundscroll).toString()+"px 0";
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
-    this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll/4).toInt().toString()+"px 0";
+    this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll~/4).toString()+"px 0";
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
@@ -99,17 +99,16 @@ class GameView {
    */
   void generateField(RaumffischGame model) {
     gamefield = new List<List<Element>>();
-    final field = model.field;
     
     
+   
 
     String table = "";
-    for (int row = 0; row < field.length; row++) {
+    for (int row = 0; row < gamesize; row++) {
       table += "<tr>";
-      for (int col = 0; col < field[row].length; col++) {
-        final assignment = field[row][col];
+      for (int col = 0; col < gamesize; col++) {
         final pos = "field_${row}_${col}";
-        table += "<td id='$pos' class='$assignment'></td>";
+        table += "<td id='$pos'></td>";
       }
       table += "</tr>";
     }

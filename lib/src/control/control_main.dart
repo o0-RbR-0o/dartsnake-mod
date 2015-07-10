@@ -83,7 +83,13 @@ class GameController {
         //Spiel anhalten
         if(mkc.isPressed( KeyCode.PAUSE));/**/ 
         //PowerUp benutzen
-         if(mkc.isPressed( KeyCode.ALT)); /**/        
+        if(mkc.isPressed( KeyCode.ALT)); /**/   
+         
+        game._ffisch.bullets.forEach((p){
+          p.move();p.move();
+        });
+        
+         
      }
     game.update(period);
     view.update(game);

@@ -684,39 +684,39 @@ table{
 
 
 //Tiles for img/powerup1.gif generated with Odysseeanemone
-.powerupA00{
+.powerup_a_00{
   background-image:url(img/powerup1.gif);
-  background-position: -0px -0px;
+  background-position: 0px 0px;
 }
-.powerupA10{
+.powerup_a_10{
   background-image:url(img/powerup1.gif);
   background-position: -8px -0px;
 }
-.powerupA20{
+.powerup_a_20{
   background-image:url(img/powerup1.gif);
   background-position: -16px -0px;
 }
-.powerupA01{
+.powerup_a_01{
   background-image:url(img/powerup1.gif);
   background-position: -0px -8px;
 }
-.powerupA11{
+.powerup_a_11{
   background-image:url(img/powerup1.gif);
   background-position: -8px -8px;
 }
-.powerupA21{
+.powerup_a_21{
   background-image:url(img/powerup1.gif);
   background-position: -16px -8px;
 }
-.powerupA02{
+.powerup_a_02{
   background-image:url(img/powerup1.gif);
   background-position: -0px -16px;
 }
-.powerupA12{
+.powerup_a_12{
   background-image:url(img/powerup1.gif);
   background-position: -8px -16px;
 }
-.powerupA22{
+.powerup_a_22{
   background-image:url(img/powerup1.gif);
   background-position: -16px -16px;
 }

@@ -17,6 +17,7 @@ class RaumffischGame {
   
   EnemyGenerator _enemyGenerator;
   ProtectlingGenerator _protectlingGenerator;
+  PowerupGenerator _powerupGenerator;
   // List of mice.
 
   
@@ -28,6 +29,8 @@ class RaumffischGame {
 
   // The gamestate of the game (one of #running, #stopped).
   Symbol _gamestate;
+  
+
 
   int get miceCounter => 1;
   /**
@@ -58,11 +61,12 @@ class RaumffischGame {
   RaumffischGame(this._size) {
     start();
 
-    _ffisch = new Ffisch(this,new SineDoubleShot(this,16));
+    _ffisch = new Ffisch(this,new OneShot(this, 16));
     protectling = new Protectling(this);
     protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
     _enemyGenerator = new EnemyGenerator(new Level.fromJSONurl("levels/level1.json"), this);
     _protectlingGenerator = new ProtectlingGenerator(new Level.fromJSONurl("levels/level1.json"), this);
+    _powerupGenerator = new PowerupGenerator(new Level.fromJSONurl("levels/level1.json"), this);
     stop();
   }
 
@@ -83,19 +87,6 @@ class RaumffischGame {
    */
   List<Protectling> get protectlings => _protectlings;
 
-  /**
-   * Returns the game field as a list of lists.
-   * Each element of the field has exactly one out of three valid states (Symbols).
-   * #empty, #mouse or #snake
-   */
-  List<List<Symbol>> get field {
-
-    var _field = new Iterable.generate(_size, (row) {
-      return new Iterable.generate(_size, (col) => #empty).toList();
-    }).toList();
-    return _field;
-  }
-
   List<Movable_Object> get objects {
     
     _objects.clear();
@@ -103,6 +94,7 @@ class RaumffischGame {
     _objects.add(_ffisch);
     _objects.addAll(_enemyGenerator._enemies);
     _objects.addAll(_ffisch.bullets);
+    _objects.addAll(_powerupGenerator._powerups);
    
     return _objects;
   }
@@ -112,14 +104,10 @@ class RaumffischGame {
     if (running){
       _enemyGenerator.tick(period);
       _protectlingGenerator.tick(period);
+      _powerupGenerator.tick(period);
     }
   }
   int get size => _size;
-
   int get level => 1;
 
-  /**
-   * Returns a textual representation of the game state.
-   */
-  String toString() => field.map((row) => row.join(" ")).join("\n");
 }

@@ -14,8 +14,10 @@ part 'src/model/game_objects/bullets.dart';
 part 'src/model/game_objects/ffisch.dart';
 part 'src/model/game_objects/enemy.dart';
 part 'src/model/game_objects/weapons.dart';
+part 'src/model/game_objects/powerups.dart';
 part 'src/model/generators/enemy_generator.dart';
 part 'src/model/generators/protectling_generator.dart';
+part 'src/model/generators/powerup_generator.dart';
 part 'src/model/parents/level.dart';
 
 part 'src/control/inputs/multikeycontroller.dart';

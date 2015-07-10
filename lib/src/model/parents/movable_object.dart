@@ -1,7 +1,7 @@
 part of raumffisch;
 
 //A class for movable objects.
-class Movable_Object{
+abstract class Movable_Object{
   final RaumffischGame _game;
   int _position_x;
   int _position_y;
@@ -22,6 +22,7 @@ class Movable_Object{
   
   //Detects collision with another Movable_Object with bounding boxes in size of the object. Returns true in case of collision.
   bool detectCollisonWith(Movable_Object o){
+
     if(this.dead){
       return false;
     }else{

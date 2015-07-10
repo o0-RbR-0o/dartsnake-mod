@@ -9,17 +9,14 @@ class EnemyGenerator extends Generator {
   }
   void tick (int period){
 
-    _game._ffisch.bullets.forEach((p){
-      p.move();p.move();
-    });
-    
+
     
 
     _enemies.forEach((e){
       e.moveleft(); 
-      if(e.detectCollisonWith(_game._ffisch) && !e.dead){
+      if(e.detectCollisonWith(_game._ffisch)){
         _game._gameOver = true;}
-      if(e.detectCollisonWith(_game.protectling) && !e.dead){
+      if(e.detectCollisonWith(_game.protectling)){
         _game.protectling.die();
       }
       List pi = _game._ffisch.bullets.toList(); //trick for a deep copy so we can iterate and remove. 
@@ -34,11 +31,11 @@ class EnemyGenerator extends Generator {
         p.die();
         _game._ffisch.bullets.remove(p);
       }       
-    }); 
-    if(e._position_x<=0){
-      e.die();                   
-    }
-   });
+      }); 
+        if(e._position_x<=0){
+          e.die();                   
+        }
+     });
     if(_random.nextInt(_level._enemy_frequency)==0){
       bool founddead=false;
       for(var f in _enemies){
@@ -50,7 +47,7 @@ class EnemyGenerator extends Generator {
         }
       };
       
-      if(!founddead){
+     if(!founddead){
         Enemy enemy = new Enemy(_game);
         enemy.setposition(gamesize-enemy._sizex,_random.nextInt(gamesize-enemy._sizey));
         _enemies.add(enemy);
