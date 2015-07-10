@@ -36,7 +36,7 @@ class OneShot extends StandardWeapon implements Weapon{
     List<Bullet> bl=new List<Bullet>();
     if(this._sfreq_counter==0){
       Bullet p = new Projectile(_game,1,0); 
-      p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
+      p.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2));
       bl.add(p);
       _game.eventSystem.shotfired=true;
     }
@@ -54,8 +54,8 @@ class SineDoubleShot extends StandardWeapon implements Weapon{
     if(this._sfreq_counter==0){
       Bullet p = new SineProjectile0(_game,1,0); 
       Bullet p2 = new SineProjectile1(_game,1,0); 
-      p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
-      p2.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
+      p.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2));
+      p2.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2));
       bl.add(p);
       bl.add(p2);
      _game.eventSystem.shot2fired=true;
@@ -73,13 +73,13 @@ class DoubleShot extends StandardWeapon implements Weapon{
     List<Bullet> bl=new List<Bullet>();
     if(this._sfreq_counter==0){
       Bullet p = new Projectile(_game,1,0); 
-      p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)+1);
+      p.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2)+1);
       _game.eventSystem.shotfired=true;
       bl.add(p);
     }
     else if(this._sfreq_counter==(this._shot_frequency/2)){
       Bullet p = new Projectile(_game,1,0);
-      p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)-1);
+      p.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2)-1);
       bl.add(p);
      _game.eventSystem.shotfired=true;
     }
@@ -96,15 +96,15 @@ class DiagonalShotWithFront extends StandardWeapon implements Weapon{
     if(this._sfreq_counter==0){
       Bullet p = new Projectile(_game,1,1); 
       Bullet p2 = new Projectile(_game,1,-1);
-      p2.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)-1);
-      p.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2)+1);
+      p2.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2)-1);
+      p.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2)+1);
       bl.add(p);
       bl.add(p2);
       _game.eventSystem.shot3fired=true;
     }
     if(this._sfreq_counter==0 || this._sfreq_counter==(this._shot_frequency/2)){
       Bullet p3 = new Bigprojectile(_game,1,0);
-      p3.setposition(_game._ffisch._position_x+_game._ffisch._sizex-1, _game._ffisch._position_y+(_game._ffisch._sizey ~/2));
+      p3.setposition(_game.ffisch._position_x+_game.ffisch._sizex-1, _game.ffisch._position_y+(_game.ffisch._sizey ~/2));
       _game.eventSystem.shot3fired=true;
       bl.add(p3);
     }

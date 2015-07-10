@@ -1,5 +1,5 @@
 part of raumffisch;
-
+//Manages lifecycle of powerups and triggers their behaviour
 class PowerupGenerator extends Generator {
   
    List<Powerup>  _powerups = new  List<Powerup>();
@@ -14,16 +14,16 @@ class PowerupGenerator extends Generator {
     if(_random.nextInt(_level._powerup_frequency)==0){
       switch(_random.nextInt(4)){
         case 0:
-          f= new OneShotPowerup(_game);
+          f= new OneShotPowerup(game);
         break;
         case 1:
-          f= new DoubleShotPowerup(_game);
+          f= new DoubleShotPowerup(game);
         break;
         case 2:
-          f = new DiagonalShotWithFrontPowerup(_game);
+          f = new DiagonalShotWithFrontPowerup(game);
         break;
         case 3:
-          f = new SineDoubleShotPowerup(_game);
+          f = new SineDoubleShotPowerup(game);
         break;
         
       }
@@ -39,8 +39,8 @@ class PowerupGenerator extends Generator {
         p.die();                   
       }
       
-      if(p.detectCollisonWith(_game._ffisch)){
-        p.apply(_game._ffisch);
+      if(p.detectCollisonWith(game.ffisch)){
+        p.apply(game.ffisch);
         p.die();
       }
     });

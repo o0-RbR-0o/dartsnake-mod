@@ -9,7 +9,7 @@ class RaumffischGame {
 
 
   List<Movable_Object> _objects = new List<Movable_Object>();
-  Ffisch _ffisch;
+  Ffisch ffisch;
   Protectling protectling;
   int _score = 0;
   
@@ -55,10 +55,10 @@ class RaumffischGame {
   void stop() { _gamestate = #stopped; }
 
   
-  Ffisch get ffisch => _ffisch;
+
   
   int lifes(){
-    return _ffisch._lifes;
+    return ffisch._lifes;
   }
 
   /**
@@ -71,12 +71,13 @@ class RaumffischGame {
     
     _level = new Level.fromJSONurl("levels/level.json");
 
-    _ffisch = new Ffisch(this,new OneShot(this, 16));
-    protectling = new Protectling(this);
-    protectling.setposition((gamesize-1)~/2, gamesize-1-protectling._sizey);
+    ffisch = new Ffisch(this,new OneShot(this, 16));
+
+
     _enemyGenerator = new EnemyGenerator(_level, this);
     _protectlingGenerator = new ProtectlingGenerator(_level, this);
     _powerupGenerator = new PowerupGenerator(_level, this);
+    _protectlingGenerator.protectling.setposition((gamesize-1)~/2, gamesize-1-_protectlingGenerator.protectling._sizey);
     stop();
   }
   
@@ -99,10 +100,10 @@ class RaumffischGame {
   List<Movable_Object> get objects {
     
     _objects.clear();
-    _objects.add(protectling);
-    _objects.add(_ffisch);
-    _objects.addAll(_enemyGenerator._enemies);
-    _objects.addAll(_ffisch.bullets);
+    _objects.add(_protectlingGenerator.protectling);
+    _objects.add(ffisch);
+    _objects.addAll(_enemyGenerator.enemies);
+    _objects.addAll(ffisch.bullets);
     _objects.addAll(_powerupGenerator._powerups);
    
     return _objects;
@@ -124,7 +125,7 @@ class RaumffischGame {
       _protectlingGenerator.tick(period);
       _powerupGenerator.tick(period);
     }
-    if(_ffisch._lifes <=0){
+    if(ffisch._lifes <=0){
       this._gameOver = true;
       
     }

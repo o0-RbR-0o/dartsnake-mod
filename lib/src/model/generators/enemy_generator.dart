@@ -2,7 +2,7 @@ part of raumffisch;
 
 class EnemyGenerator extends Generator {
   
-  List<Enemy> _enemies = new List<Enemy>();
+  List<Enemy> enemies = new List<Enemy>();
   
   EnemyGenerator(Level level, RaumffischGame game) :super(level, game){
     
@@ -12,27 +12,27 @@ class EnemyGenerator extends Generator {
 
     
 
-    _enemies.forEach((e){
+    enemies.forEach((e){
       e.moveleft(); 
-      if(e.detectCollisonWith(_game._ffisch)){
+      if(e.detectCollisonWith(game.ffisch)){
          e.dead = true;
-        _game._ffisch.removelifes(1);
+        game.ffisch.removelifes(1);
         }
-      if(e.detectCollisonWith(_game.protectling)){
-        _game.protectling.die();
+      if(e.detectCollisonWith(game._protectlingGenerator.protectling)){
+        game._protectlingGenerator.protectling.die();
         e.die();
       }
-      List pi = _game._ffisch.bullets.toList(); //trick for a deep copy so we can iterate and remove. 
+      List pi = game.ffisch.bullets.toList(); //trick for a deep copy so we can iterate and remove. 
                                               //Ordinary loop might be faster.
       pi.forEach((p){
         if(e.detectCollisonWith(p) && p.dead == false && e.dead ==false){
           e.take_damage(p._damage);
        
-          _game._ffisch.bullets.remove(p);             
+          game.ffisch.bullets.remove(p);             
         }
       if(p._position_x>=gamesize-p._sizex){
         p.die();
-        _game._ffisch.bullets.remove(p);
+        game.ffisch.bullets.remove(p);
       }       
       }); 
         if(e._position_x<=0){
@@ -41,7 +41,7 @@ class EnemyGenerator extends Generator {
      });
     if(_random.nextInt(_level._enemy_frequency)==0){
       bool founddead=false;
-      for(var f in _enemies){
+      for(var f in enemies){
         if(f.dead && !founddead){
           f.setposition(gamesize-f._sizex,_random.nextInt(gamesize-f._sizey));
           f.dead=false;
@@ -51,9 +51,9 @@ class EnemyGenerator extends Generator {
       };
       
      if(!founddead){
-        Enemy enemy = new Enemy(_game);
+        Enemy enemy = new Enemy(game);
         enemy.setposition(gamesize-enemy._sizex,_random.nextInt(gamesize-enemy._sizey));
-        _enemies.add(enemy);
+        enemies.add(enemy);
       }
     }
   }

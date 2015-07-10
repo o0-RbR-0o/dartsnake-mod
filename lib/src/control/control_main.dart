@@ -76,14 +76,14 @@ class GameController {
           game.ffisch.shoot();/**/ 
         }
         else{
-          game._ffisch._current_weapon.setShotFreqCount(0);
+          game.ffisch._current_weapon.setShotFreqCount(0);
         }
         //Spiel anhalten
         if(mkc.isPressed( KeyCode.PAUSE));/**/ 
         //PowerUp benutzen
         if(mkc.isPressed( KeyCode.ALT)); /**/   
          
-        game._ffisch.bullets.forEach((p){
+        game.ffisch.bullets.forEach((p){
           p.move();p.move();
         });
         
