@@ -681,3 +681,80 @@ table{
 .enemy22 {
   background-image: url('img/enemy/enemy22.png');
 }
+
+
+//Tiles for img/powerup1.gif generated with Odysseeanemone
+.powerupA00{
+  background-image:url(img/powerup1.gif);
+  background-position: -0px -0px;
+}
+.powerupA10{
+  background-image:url(img/powerup1.gif);
+  background-position: -8px -0px;
+}
+.powerupA20{
+  background-image:url(img/powerup1.gif);
+  background-position: -16px -0px;
+}
+.powerupA01{
+  background-image:url(img/powerup1.gif);
+  background-position: -0px -8px;
+}
+.powerupA11{
+  background-image:url(img/powerup1.gif);
+  background-position: -8px -8px;
+}
+.powerupA21{
+  background-image:url(img/powerup1.gif);
+  background-position: -16px -8px;
+}
+.powerupA02{
+  background-image:url(img/powerup1.gif);
+  background-position: -0px -16px;
+}
+.powerupA12{
+  background-image:url(img/powerup1.gif);
+  background-position: -8px -16px;
+}
+.powerupA22{
+  background-image:url(img/powerup1.gif);
+  background-position: -16px -16px;
+}
+
+//Tiles for img/powerup2.gif generated with Odysseeanemone
+.powerupB00{
+  background-image:url(img/powerup2.gif);
+  background-position: -0px -0px;
+}
+.powerupB10{
+  background-image:url(img/powerup2.gif);
+  background-position: -8px -0px;
+}
+.powerupB20{
+  background-image:url(img/powerup2.gif);
+  background-position: -16px -0px;
+}
+.powerupB01{
+  background-image:url(img/powerup2.gif);
+  background-position: -0px -8px;
+}
+.powerupB11{
+  background-image:url(img/powerup2.gif);
+  background-position: -8px -8px;
+}
+.powerupB21{
+  background-image:url(img/powerup2.gif);
+  background-position: -16px -8px;
+}
+.powerupB02{
+  background-image:url(img/powerup2.gif);
+  background-position: -0px -16px;
+}
+.powerupB12{
+  background-image:url(img/powerup2.gif);
+  background-position: -8px -16px;
+}
+.powerupB22{
+  background-image:url(img/powerup2.gif);
+  background-position: -16px -16px;
+}
