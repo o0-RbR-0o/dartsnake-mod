@@ -3,7 +3,7 @@ part of raumffisch;
 //Class for the player Ffisch extends Movable_Object. Would be cool to change positioning stuff to use vectors...
 class Ffisch extends Movable_Object{
   int _powerups;
-  int _lifes;
+  int _lifes = 3;
   int _sizex = 8;
   int _sizey = 6;
   Weapon _current_weapon;

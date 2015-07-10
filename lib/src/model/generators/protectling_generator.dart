@@ -16,10 +16,17 @@ class ProtectlingGenerator extends Generator {
     _game._ffisch.bullets.forEach((b){
       if(b.detectCollisonWith(_game.protectling)){
          _game.protectling.die();
-         _game._score -10;
       }
     });
     _game.protectling.move(period);
+    
+
+      if(_game.protectling._position_x < 2){
+        _game.protectling.dead = true;
+        _game._score+=10;
+        _game._ffisch.addlifes(1);
+      }
+    
 
   }
 }

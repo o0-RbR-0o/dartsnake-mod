@@ -7,7 +7,7 @@ part of raumffisch;
  */
 class RaumffischGame {
 
-  // The snake of the game.
+
   List<Movable_Object> _objects = new List<Movable_Object>();
   Ffisch _ffisch;
   Protectling protectling;
@@ -33,8 +33,6 @@ class RaumffischGame {
   Symbol _gamestate;
   
 
-
-  int get miceCounter => 1;
   /**
    * Indicates whether game is stopped.
    */
@@ -44,6 +42,7 @@ class RaumffischGame {
    * Indicates whether game is running.
    */
   bool get running => _gamestate == #running;
+  
 
   /**
    * Starts the game.
@@ -54,6 +53,13 @@ class RaumffischGame {
    * Stops the game.
    */
   void stop() { _gamestate = #stopped; }
+
+  
+  Ffisch get ffisch => _ffisch;
+  
+  int lifes(){
+    return _ffisch._lifes;
+  }
 
   /**
    * Constructor to create a new game with
@@ -73,6 +79,9 @@ class RaumffischGame {
     _powerupGenerator = new PowerupGenerator(_level, this);
     stop();
   }
+  
+
+  
 
   /**
    * Returns whether the game is over.
@@ -81,10 +90,6 @@ class RaumffischGame {
   bool get gameOver => _gameOver;
   
   bool _gameOver = false;
-  /**
-   * Returns the snake.
-   */
-  Ffisch get ffisch => _ffisch;
 
   /**
    * Returns a list of mice.
@@ -118,6 +123,10 @@ class RaumffischGame {
       _enemyGenerator.tick(period);
       _protectlingGenerator.tick(period);
       _powerupGenerator.tick(period);
+    }
+    if(_ffisch._lifes <=0){
+      this._gameOver = true;
+      
     }
   }
   int get size => _size;

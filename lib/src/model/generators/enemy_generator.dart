@@ -15,9 +15,12 @@ class EnemyGenerator extends Generator {
     _enemies.forEach((e){
       e.moveleft(); 
       if(e.detectCollisonWith(_game._ffisch)){
-        _game._gameOver = true;}
+         e.dead = true;
+        _game._ffisch.removelifes(1);
+        }
       if(e.detectCollisonWith(_game.protectling)){
         _game.protectling.die();
+        e.die();
       }
       List pi = _game._ffisch.bullets.toList(); //trick for a deep copy so we can iterate and remove. 
                                               //Ordinary loop might be faster.

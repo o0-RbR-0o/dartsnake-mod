@@ -10,6 +10,12 @@ class Protectling extends Movable_Object{
     unitname = "protectling";
   }
   
+  void die(){
+    super.die();
+    _game._score -10;
+    _game._ffisch.removelifes(1);
+  }
+  
   move(int period){
 
     if(_position_y==gamesize-_sizey-1){
@@ -31,10 +37,7 @@ class Protectling extends Movable_Object{
     
     if(period % 2 == 0){
       this._position_y+=dir;
-      if(_position_x < 2){
-        this.dead = true;
-        _game._score+=10;
-      }
+
     }
   }
 }

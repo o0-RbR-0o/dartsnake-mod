@@ -34,7 +34,6 @@ class GameController {
   Timer updateTrigger;
   
   MultiKeyController mkc;
-
   GameController() {
 
     // New game is started by user

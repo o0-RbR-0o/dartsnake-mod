@@ -29,6 +29,12 @@ class GameView {
    * Used to visualize the field of a [RaumffischGame] as a HTML table.
    */
   final HtmlElement game = querySelector('#snakegame');
+  
+  /**
+   * Element to display ffischlifes
+   * 
+   */
+  final HtmlElement lifesdisplay = querySelector('#ffischlifes');
 
   
   final HtmlElement sbg = querySelector('#snakegame');
@@ -124,6 +130,9 @@ class GameView {
         }
     
     model.eventSystem.resetevents();
+    
+    this.lifesdisplay.style.width = (model.lifes()*64).toString()+"px";
+    
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
