@@ -65,12 +65,20 @@ a {
   text-align: center
 }
 
-#message #reasons {
+#reasons {
   background: rgba(255, 255, 255, 0.5);
+  width: 646px;
+  box-sizing: border-box;
   font-size: 2rem;
   color: white;
   text-align: center;
+  margin:auto;
+  top:160px;
+  position:fixed;
+  padding:6px;
+
 }
+
 
 #controls #level:empty { visibility: hidden; }
 #controls #points:empty { visibility: hidden; }
