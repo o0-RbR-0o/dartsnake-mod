@@ -14,6 +14,6 @@ abstract class Generator{
     this._level = level;
   }
   //for behaviours triggering
-  //int perioud ist the current cycle count of the controller.
-  void tick(int perioud);
+  //int period ist the current cycle count of the controller.
+  void tick(int period);
 }

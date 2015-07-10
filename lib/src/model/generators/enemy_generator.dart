@@ -39,7 +39,7 @@ class EnemyGenerator extends Generator {
       }       
       }); 
         if(e._position_x<=0){
-          e.die();                   
+          e.dead=true;                   
         }
      });
     if(_random.nextInt(_level._enemy_frequency)==0){

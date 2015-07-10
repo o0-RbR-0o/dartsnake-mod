@@ -81,8 +81,6 @@ class GameController {
         game.ffisch.bullets.forEach((p){
           p.move();p.move();
         });
-        
-         
      }
     game.update(period);
     view.update(game);

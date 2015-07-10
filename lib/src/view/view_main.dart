@@ -7,7 +7,7 @@ part of raumffisch;
 class GameView {
 
   List<List<Element>> gamefield;
-  
+  final bool sound_on=false;
   //This will show the players score
   final HtmlElement score = querySelector("#score");  
   
@@ -44,7 +44,6 @@ class GameView {
   final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
   final AudioElement soundPowerup1 = querySelector('#powerup1');
   final AudioElement audio = querySelector('#audiop');
-  //messagebox for the gameover message
   final Element message = querySelector('#message');
 
   /**
@@ -63,9 +62,9 @@ class GameView {
     //welcome.style.display = model.stopped ? "block" : "none";
     //Display gameover message
     if(model._gameOver){
-      message.innerHtml = "You've died. Your score: "+ model._score.toString();
+    message.innerHtml = "You've died. Your score: "+ model._score.toString();
       
-    }
+  }
 
 
     
@@ -77,52 +76,55 @@ class GameView {
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll~/4).toString()+"px 0";
     
-    if(model.eventSystem.startmusic){
-      audio.load();      
-      audio.muted=false;
-            audio.play();
-            audio.volume=0.4;
+    if(sound_on){
+      if(model.eventSystem.startmusic){     
+        audio.muted=false;
+              audio.play();
+              audio.volume=0.4;
+      }
+      if(model.eventSystem.shotfired){
+        this.soundShot1.load();
+        //this.soundShot1.currentTime=0;
+        this.soundShot1.play();
+        this.soundShot1.muted=false;
+        this.soundShot1.loop=false;
+      }
+      if(model.eventSystem.shot2fired){
+            this.soundShot2.load();
+            //this.soundShot2.currentTime=0;
+            this.soundShot2.play();
+            this.soundShot2.muted=false;
+            this.soundShot2.loop=false;
+      }
+      if(model.eventSystem.shot3fired){
+               this.soundShot3.load();
+               //this.soundShot3.currentTime=0;
+               this.soundShot3.play();
+               this.soundShot3.muted=false;
+               this.soundShot3.loop=false;
+      }
+      if(model.eventSystem.enemydied){
+            this.soundEnemyDie1.load();
+            //this.soundEnemyDie1.currentTime=0;
+            this.soundEnemyDie1.play();
+            this.soundEnemyDie1.muted=false;
+            this.soundEnemyDie1.loop=false;
+      }
+      if(model.eventSystem.powerupcollected){
+            this.soundPowerup1.load();
+            // this.soundPowerup1.currentTime=0;
+            this.soundPowerup1.play();
+            this.soundPowerup1.muted=false;
+            this.soundPowerup1.loop=false;
+      }
+      if(this.audio.currentTime>=59.8){
+            this.audio.load();
+            this.audio.play();
+            this.audio.muted=false;
+      }
     }
-    if(model.eventSystem.shotfired){
-      this.soundShot1.load();
-      //this.soundShot1.currentTime=0;
-      this.soundShot1.play();
-      this.soundShot1.muted=false;
-      this.soundShot1.loop=false;
-    }
-    if(model.eventSystem.shot2fired){
-          this.soundShot2.load();
-          //this.soundShot2.currentTime=0;
-          this.soundShot2.play();
-          this.soundShot2.muted=false;
-          this.soundShot2.loop=false;
-        }
-    if(model.eventSystem.shot3fired){
-             this.soundShot3.load();
-             //this.soundShot3.currentTime=0;
-             this.soundShot3.play();
-             this.soundShot3.muted=false;
-             this.soundShot3.loop=false;
-           }
-    if(model.eventSystem.enemydied){
-          this.soundEnemyDie1.load();
-          //this.soundEnemyDie1.currentTime=0;
-          this.soundEnemyDie1.play();
-          this.soundEnemyDie1.muted=false;
-          this.soundEnemyDie1.loop=false;
-        }
-    if(model.eventSystem.powerupcollected){
-          this.soundPowerup1.load();
-          // this.soundPowerup1.currentTime=0;
-          this.soundPowerup1.play();
-          this.soundPowerup1.muted=false;
-          this.soundPowerup1.loop=false;
-        }
-    if(this.audio.currentTime>=59.8){
-          this.audio.load();
-          this.audio.play();
-          this.audio.muted=false;
-        }
+        
+         
     model.eventSystem.resetevents();
     
     this.lifesdisplay.style.width = (model.lifes()*64).toString()+"px";
