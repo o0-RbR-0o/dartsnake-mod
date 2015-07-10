@@ -1,5 +1,7 @@
 part of raumffisch;
 
+
+//A class for setting event flags. This is mainly used to trigger sounds in the view.
 class EventSystem{
   bool fishdied=false;
   bool shotfired=false;
@@ -8,6 +10,7 @@ class EventSystem{
   bool protectlingsave=false;
   bool shot2fired=false;
   bool shot3fired=false;
+  bool startmusic=false;
   EventSystem();
   
   resetevents(){
@@ -18,5 +21,6 @@ class EventSystem{
     this.protectlingsave=false;
     this.shot2fired=false;
     this.shot3fired=false;
+    this.startmusic=false;
   }
 }

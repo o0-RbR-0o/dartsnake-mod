@@ -20,7 +20,7 @@ class GameController {
    */
   final GameView view = new GameView();
   
-  AudioElement audio = querySelector('#audiop');
+  
   
   //counts the gamecycles
   int period = 0;
@@ -41,10 +41,8 @@ class GameController {
       view.generateField(game);
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       mkc=new MultiKeyController();
+      game.eventSystem.startmusic=true;
       
-      audio.muted=false;
-      audio.play();
-      audio.volume=0.4;
       game.start();
       //view.update(game);
     });
@@ -88,12 +86,6 @@ class GameController {
      }
     game.update(period);
     view.update(game);
-    if(this.audio.currentTime>=59.8){
-      this.audio.load();
-      this.audio.currentTime=0;
-      this.audio.play();
-      
-      this.audio.muted=false;
-    }
+    
   }
 }

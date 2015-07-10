@@ -43,7 +43,7 @@ class GameView {
   final AudioElement soundShot3 = querySelector('#shotfire3');
   final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
   final AudioElement soundPowerup1 = querySelector('#powerup1');
-  
+  final AudioElement audio = querySelector('#audiop');
   //messagebox for the gameover message
   final Element message = querySelector('#message');
 
@@ -77,8 +77,12 @@ class GameView {
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll~/4).toString()+"px 0";
     
-   
-    
+    if(model.eventSystem.startmusic){
+      audio.load();      
+      audio.muted=false;
+            audio.play();
+            audio.volume=0.4;
+    }
     if(model.eventSystem.shotfired){
       this.soundShot1.load();
       //this.soundShot1.currentTime=0;
@@ -114,7 +118,11 @@ class GameView {
           this.soundPowerup1.muted=false;
           this.soundPowerup1.loop=false;
         }
-    
+    if(this.audio.currentTime>=59.8){
+          this.audio.load();
+          this.audio.play();
+          this.audio.muted=false;
+        }
     model.eventSystem.resetevents();
     
     this.lifesdisplay.style.width = (model.lifes()*64).toString()+"px";
