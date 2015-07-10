@@ -20,6 +20,7 @@ class EnemyGenerator extends Generator {
       if(e.detectCollisonWith(game.ffisch)){
          e.dead = true;
         game.ffisch.removelifes(1);
+        game.ffisch._current_weapon=new OneShot(this.game, 16); 
         }
       if(e.detectCollisonWith(game._protectlingGenerator.protectling)){
         game._protectlingGenerator.protectling.die();

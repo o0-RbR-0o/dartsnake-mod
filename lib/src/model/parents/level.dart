@@ -27,7 +27,7 @@ class Level{
   
 
   Level.fromJSONurl(String f){
-    String json=r'[{"level": {"length": 500,"enemy_frequency": 10,"powerup_frequency": 96006}},{"level": {    "length": 5000,    "enemy_frequency": 40,    "powerup_frequency": 9}}]';
+    String json=r'[{"level": {"length": 700,"enemy_frequency": 60,"powerup_frequency": 2500}},{"level": {    "length": 1450,    "enemy_frequency": 40,    "powerup_frequency": 500}},{"level": {    "length": 2900,    "enemy_frequency": 25,    "powerup_frequency": 600}},{"level": {    "length": 5000,    "enemy_frequency": 10,    "powerup_frequency": 500}}]';
     this.fromJSONstring(json);
   } 
   
