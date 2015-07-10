@@ -35,6 +35,7 @@ class GameView {
    * 
    */
   final HtmlElement lifesdisplay = querySelector('#ffischlifes');
+  final HtmlElement distancedisplay = querySelector('#distance');
 
   
   final HtmlElement sbg = querySelector('#snakegame');
@@ -132,6 +133,7 @@ class GameView {
     model.eventSystem.resetevents();
     
     this.lifesdisplay.style.width = (model.lifes()*64).toString()+"px";
+    this.distancedisplay.style.width = ((model.period / model._level._length)*100).toString()+"%";
     
     
     //Spielobjekte aus dem Model auf das View-Grid zeichnen.

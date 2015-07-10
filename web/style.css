@@ -28,10 +28,10 @@
   background-size:100%
 }
 
-#weapon-power{
+#distance{
   box-sizing: border-box;
   height:1em; width:100%;
-  background-color:red;
+  background-color:blue;
   display: inline-block;
   margin:0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;

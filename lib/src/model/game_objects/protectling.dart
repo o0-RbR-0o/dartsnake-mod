@@ -13,7 +13,7 @@ class Protectling extends Movable_Object{
   void die(){
     super.die();
     _game._score -10;
-    _game._ffisch.removelifes(1);
+    //_game._ffisch.removelifes(1);
   }
   
   move(int period){
