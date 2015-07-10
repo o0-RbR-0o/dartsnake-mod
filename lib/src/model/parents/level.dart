@@ -6,6 +6,7 @@ class Level{
   int _length =1;
   int _level = 0;
   var jsonData;
+  bool levelLoaded=false;
   
   Level(){
     
@@ -27,9 +28,13 @@ class Level{
   void fromJSONstring(String s){
     
 
-    this.jsonData=JSON.decode(s);
+    this.jsonData=JSON.decode(s).then(this.levelLoaded=true);
+    while(!this.levelLoaded);
+    
 
   }
+
+  
   bool levelUp(){
     this._level++;
     return level(_level);
