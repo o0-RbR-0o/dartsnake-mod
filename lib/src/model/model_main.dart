@@ -63,7 +63,7 @@ class RaumffischGame {
   RaumffischGame(this._size) {
     start();
     
-    _level = new Level.fromVariables(100, 40 , 2500);
+    _level = new Level.fromJSONurl("levels/level.json");
 
     _ffisch = new Ffisch(this,new OneShot(this, 16));
     protectling = new Protectling(this);

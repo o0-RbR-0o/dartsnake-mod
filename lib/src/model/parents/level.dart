@@ -8,6 +8,8 @@ class Level{
   var jsonData;
   bool levelLoaded=false;
   
+  
+  
   Level(){
     
   }
@@ -15,9 +17,15 @@ class Level{
       this._powerup_frequency=powerup_frequency;
       this._enemy_frequency=enemy_frequency;
       this._length=length;
-    }
+  }
   
-  //Laufzeitprobleme Racecondition
+
+  void loaded(var s){
+    levelLoaded = true;
+  }
+  
+  
+
   Level.fromJSONurl(String f){
      HttpRequest.getString(f).then(this.fromJSONstring);
      
@@ -25,10 +33,12 @@ class Level{
      print(jsonData.toString());
   }
   
+  
+  
   void fromJSONstring(String s){
     
 
-    this.jsonData=JSON.decode(s).then(this.levelLoaded=true);
+    this.jsonData=JSON.decode(s).then(this.loaded);
     while(!this.levelLoaded);
     
 
