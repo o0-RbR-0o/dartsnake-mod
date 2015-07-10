@@ -5,7 +5,6 @@ abstract class Bullet extends Movable_Object{
   int _sizex;
   int _sizey;
   int _damage;
-  int _stability;
   int _speedx;
   int _speedy;
   Bullet(_game,this._speedx,this._speedy) : super(_game);      
@@ -17,7 +16,6 @@ class Projectile extends Movable_Object implements Bullet{
   int _sizex = 1;
   int _sizey = 1;
   int _damage=1;
-  int _stability=1;
   int _speedx;
   int _speedy;
   

@@ -1,4 +1,6 @@
 part of raumffisch;
+
+//class to make powerups which are collectible
 abstract class Powerup extends Movable_Object {
   Powerup(_game):super(_game){
     this._sizex =3;

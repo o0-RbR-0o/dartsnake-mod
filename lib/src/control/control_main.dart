@@ -22,6 +22,7 @@ class GameController {
   
   AudioElement audio = querySelector('#audiop');
   
+  //counts the gamecycles
   int period = 0;
 
   /**

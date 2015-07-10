@@ -8,19 +8,10 @@ class GameView {
 
   List<List<Element>> gamefield;
   
-  /**
-   * Element with id '#title' of the DOM tree.
-   * Shown only if game is not running.
-   */
-  final title = querySelector("#title");
-
-  /**
-   * Element with id '#welcome' of the DOM tree.
-   * Shown only if game is not running.
-   */
-  final HtmlElement welcome = querySelector("#welcome");
-  final HtmlElement score = querySelector("#score");
+  //This will show the players score
+  final HtmlElement score = querySelector("#score");  
   
+  //introvoerlay for the welcomescreen
   final HtmlElement intro_overlay = querySelector("#intro_overlay");
  
 
@@ -53,30 +44,24 @@ class GameView {
   final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
   final AudioElement soundPowerup1 = querySelector('#powerup1');
   
-  /**
-   * Element with id '#reasons' of the DOM tree.
-   * Used to indicate why the game entered the game over state.
-   */
+  //messagebox for the gameover message
   final Element message = querySelector('#message');
-
-  /**
-   * Element with id '#points' of the DOM tree.
-   * Used to indicate how many points a user has actually collected.
-   */
-  final points = querySelector('#points');
 
   /**
    * Start button of the game.
    */
   HtmlElement get startButton => querySelector('#intro_overlay');
   
+  //cyclecounters for parrallaxscrolling
   int backgroundscroll=0,mainbackgroundscroll=0;
 
+  //updates the DOM according to the model
   void update(RaumffischGame model) {
     
     score.setInnerHtml(model._score.toString());
     
     //welcome.style.display = model.stopped ? "block" : "none";
+    //Display gameover message
     if(model._gameOver){
       message.innerHtml = "You've died. Your score: "+ model._score.toString();
       
@@ -136,7 +121,7 @@ class GameView {
     this.distancedisplay.style.width = ((model.period / model._level._length)*100).toString()+"%";
     
     
-    //Spielobjekte aus dem Model auf das View-Grid zeichnen.
+    //Draws on the gamefiels accroding to model
     gamefield.forEach((f){f.forEach((td){td.classes.clear();});});
     model.objects.forEach(
       (o){
