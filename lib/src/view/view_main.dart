@@ -71,7 +71,7 @@ class GameView {
     
     welcome.style.display = model.stopped ? "block" : "none";
 
-    //reasons.innerHtml = "";
+    reasons.innerHtml = "";
 
     
     //update background scrolling \o/

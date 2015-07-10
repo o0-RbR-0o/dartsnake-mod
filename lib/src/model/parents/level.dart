@@ -5,7 +5,7 @@ class Level{
   int _enemy_frequency = 1;
   int _length =1;
   int _level = 0;
-  var jsonData;
+  var jsonData = null;
   bool levelLoaded=false;
   
   
@@ -37,9 +37,8 @@ class Level{
   
   void fromJSONstring(String s){
     
-
-    this.jsonData=JSON.decode(s).then(this.loaded);
-    while(!this.levelLoaded);
+    while(jsonData == null); //dirty, we know...
+    JSON.decode(s).then(this.jsonData);
     
 
   }

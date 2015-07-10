@@ -63,7 +63,7 @@ class RaumffischGame {
   RaumffischGame(this._size) {
     start();
     
-    _level = new Level.fromJSONurl("levels/level.json");
+    _level = new Level.fromJSONurl("levels/level.josn");
 
     _ffisch = new Ffisch(this,new OneShot(this, 16));
     protectling = new Protectling(this);
@@ -104,8 +104,8 @@ class RaumffischGame {
   }
   
   void applylevelUp(){
-    if(!_level.levelUp()){
-      _gameOver = true;
+    if(_level.levelUp()){
+      
     }
   }
   
