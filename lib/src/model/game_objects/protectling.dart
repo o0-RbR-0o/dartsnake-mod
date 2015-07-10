@@ -1,5 +1,5 @@
 part of raumffisch;
-
+//Ffisch has to protect this small fellow to get more points and lifes.
 class Protectling extends Movable_Object{
   int _sizex = 1;
   int _sizey = 2;

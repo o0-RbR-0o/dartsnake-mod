@@ -2,8 +2,6 @@ part of raumffisch;
 
 /**
  * Defines a [RaumffischGame]. A [RaumffischGame] consists of n x n field.
- * On this field there moves a user controlled [Snake] of increasing length.
- * Aim of the [Snake] is to eat as many mice ([Mouse]) as possible.
  */
 class RaumffischGame {
 
@@ -20,11 +18,11 @@ class RaumffischGame {
   EnemyGenerator _enemyGenerator;
   ProtectlingGenerator _protectlingGenerator;
   PowerupGenerator _powerupGenerator;
-  // List of mice.
+
 
   EventSystem eventSystem=new EventSystem();
 
-  var _protectlings = [];
+
 
   // The field size of the game (nxn field)
   final int _size;
@@ -56,16 +54,12 @@ class RaumffischGame {
 
   
 
-  
+  //returns the lifes of the ffisch
   int lifes(){
     return ffisch._lifes;
   }
 
-  /**
-   * Constructor to create a new game with
-   * - a centered snake heading up ([headUp])
-   * - and one static random placed mouse on the field.
-   */
+  //Constructor
   RaumffischGame(this._size) {
     start();
     
@@ -86,16 +80,11 @@ class RaumffischGame {
 
   /**
    * Returns whether the game is over.
-   * Game is over, when snake has left the field or is tangled.
+   * GGame is over if Ffisch has no more lifes
    */
-  bool get gameOver => _gameOver;
-  
+  bool get gameOver => _gameOver;  
   bool _gameOver = false;
 
-  /**
-   * Returns a list of mice.
-   */
-  List<Protectling> get protectlings => _protectlings;
 
   List<Movable_Object> get objects {
     
@@ -109,12 +98,14 @@ class RaumffischGame {
     return _objects;
   }
   
+  //Switches the Level to the next level.
   void applylevelUp(){
     _level.levelUp();
       
     
   }
   
+  //updates the model according to game logic
   void update(int period) {
     this.period = period;
     if (running){

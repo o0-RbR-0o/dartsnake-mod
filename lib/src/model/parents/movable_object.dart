@@ -16,6 +16,8 @@ abstract class Movable_Object{
     
   }
   
+  //sets the object to dead which means it wont be rendered no longer. 
+  //will be collected and removed in tick() of the generator from the generator later.
   void die(){
     this.dead = true;
   }

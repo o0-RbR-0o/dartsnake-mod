@@ -5,11 +5,7 @@ part of raumffisch;
  * to grab interactions of a user with a [RaumffischGame] and translate
  * them into valid [RaumffischGame] actions.
  *
- * Furthermore a [GameController] object triggers the
- * movements of a [Snake] object and (several) [Mouse] objects
- * of a [RaumffischGame].
- *
- * Necessary updates of the view are delegated to a [GameView] object
+ *  * Necessary updates of the view are delegated to a [GameView] object
  * to inform the user about changing [RaumffischGame] states.
  */
 class GameController {

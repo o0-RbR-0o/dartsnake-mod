@@ -1,5 +1,6 @@
 part of raumffisch;
 
+//Manages lifecycle of enemies and triggers their behaviour
 class EnemyGenerator extends Generator {
   
   List<Enemy> enemies = new List<Enemy>();
@@ -7,6 +8,8 @@ class EnemyGenerator extends Generator {
   EnemyGenerator(Level level, RaumffischGame game) :super(level, game){
     
   }
+  
+  //trigger the behaviour of the enemies.
   void tick (int period){
 
 
