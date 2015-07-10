@@ -516,13 +516,6 @@ table{
 }
 
 
-
-
-
-
-
-
-//Tiles for img/kraken.gif generated with Odysseeanemone
 .enemykraken00{
   background-image:url(img/kraken.gif);
   background-position: -0px -0px;
@@ -690,7 +683,6 @@ table{
 }
 
 
-//Tiles for img/powerup1.gif generated with Odysseeanemone
 .powerup_a_00{
   background-image:url(img/powerup1.gif);
   background-position: 0px 0px;
@@ -728,10 +720,10 @@ table{
   background-position: -16px -16px;
 }
 
-//Tiles for img/powerup2.gif generated with Odysseeanemone
+
 .powerupB00{
   background-image:url(img/powerup2.gif);
-  background-position: -0px -0px;
+  background-position: 0px 0px;
 }
 .powerupB10{
   background-image:url(img/powerup2.gif);

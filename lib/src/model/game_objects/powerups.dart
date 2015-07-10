@@ -51,7 +51,7 @@ class OneShotPowerup extends Powerup{
 class DiagonalShotWithFrontPowerup extends Powerup{
 
   DiagonalShotWithFrontPowerup(_game):super(_game){
-    this.unitname = "powerup_a_";
+    this.unitname = "powerupB";
     
   }
   void apply(Ffisch ffisch){
