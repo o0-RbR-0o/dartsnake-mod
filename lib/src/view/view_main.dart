@@ -80,6 +80,8 @@ class GameView {
     this.sbg2.style.backgroundPosition=(-this.backgroundscroll/2).toString()+"px 0";
     this.mbg.style.backgroundPosition=(-this.mainbackgroundscroll~/4).toString()+"px 0";
     
+   
+    
     if(model.eventSystem.shotfired){
       this.soundShot1.load();
       this.soundShot1.currentTime=0;

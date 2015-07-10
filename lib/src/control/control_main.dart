@@ -24,6 +24,7 @@ class GameController {
    */
   final GameView view = new GameView();
   
+  AudioElement audio = querySelector('#audiop');
   
   int period = 0;
 
@@ -44,7 +45,7 @@ class GameController {
       view.generateField(game);
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       mkc=new MultiKeyController();
-      AudioElement audio = querySelector('#audiop');
+      
       audio.muted=false;
       audio.play();
       audio.volume=0.4;
@@ -52,9 +53,6 @@ class GameController {
       //view.update(game);
     });
 
-    // Getting inputs:
-    window.onKeyDown.listen((KeyboardEvent ev) {
-    });
   }
 
   //Update pressed keys and tell model what to do.
@@ -94,5 +92,12 @@ class GameController {
      }
     game.update(period);
     view.update(game);
+    if(this.audio.currentTime>=59.8){
+      this.audio.load();
+      this.audio.currentTime=0;
+      this.audio.play();
+      
+      this.audio.muted=false;
+    }
   }
 }
