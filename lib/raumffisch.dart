@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:collection';
 import 'dart:convert';
+import 'package:stagexl/stagexl.dart' as stxl;
 
 part 'src/model/parents/movable_object.dart';
 part 'src/model/parents/generator.dart';

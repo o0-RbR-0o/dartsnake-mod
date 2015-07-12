@@ -42,6 +42,7 @@ class GameController {
       updateTrigger = new Timer.periodic(gameSpeed, (_) => _update());
       mkc=new MultiKeyController();
       game.eventSystem.startmusic=true;
+      view.loadSounds();
       
       game.start();
       //view.update(game);
@@ -72,6 +73,10 @@ class GameController {
         }
         else{
           game.ffisch._current_weapon.setShotFreqCount(0);
+        }
+        if(mkc.isPressed(KeyCode.B)&&mkc.isPressed(KeyCode.N)&&mkc.isPressed(KeyCode.S)){
+          game.eventSystem.derhatdochan=true;
+          game.ffisch.addlifes(5);
         }
         //Spiel anhalten
         if(mkc.isPressed( KeyCode.PAUSE));/**/ 

@@ -55,6 +55,9 @@ class Level{
       this._length=jsonData[i]['level']["length"];
       return true;
     }
+    
     }
+    
+    return true;
   }
 }

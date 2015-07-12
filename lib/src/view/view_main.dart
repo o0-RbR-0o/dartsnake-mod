@@ -38,13 +38,9 @@ class GameView {
    */
   final gameover = querySelector('#gameover');
   
-  final AudioElement soundShot1 = querySelector('#shotfire1');
-  final AudioElement soundShot2 = querySelector('#shotfire2');
-  final AudioElement soundShot3 = querySelector('#shotfire3');
-  final AudioElement soundEnemyDie1 = querySelector('#enemydie1');
-  final AudioElement soundPowerup1 = querySelector('#powerup1');
-  final AudioElement audio = querySelector('#audiop');
   final Element message = querySelector('#message');
+  
+  stxl.ResourceManager resMng=new stxl.ResourceManager();
 
   /**
    * Start button of the game.
@@ -54,6 +50,17 @@ class GameView {
   //cyclecounters for parrallaxscrolling
   int backgroundscroll=0,mainbackgroundscroll=0;
 
+  void loadSounds(){
+    
+    resMng.addSound("shot1", "audio/laser.wav");
+    resMng.addSound("shot2", "audio/laser2.wav");
+    resMng.addSound("shot3", "audio/laser3.wav");
+    resMng.addSound("powerup1", "audio/powerup1.wav");
+    resMng.addSound("enemydie1", "audio/enemydie1.wav");
+    resMng.load();
+    
+  }
+  
   //updates the DOM according to the model
   void update(RaumffischGame model) {
     
@@ -78,50 +85,29 @@ class GameView {
     
     if(sound_on){
       if(model.eventSystem.startmusic){     
-        audio.muted=false;
-              audio.play();
-              audio.volume=0.4;
+                        stxl.AudioElementSound.load("audio/rbr_gamemusic1.ogg").then((stxl.Sound sound)=>sound.play(true));
       }
       if(model.eventSystem.shotfired){
-        this.soundShot1.load();
-        //this.soundShot1.currentTime=0;
-        this.soundShot1.play();
-        this.soundShot1.muted=false;
-        this.soundShot1.loop=false;
+        var sound = this.resMng.getSound("shot1");
+        sound.play(false);
       }
       if(model.eventSystem.shot2fired){
-            this.soundShot2.load();
-            //this.soundShot2.currentTime=0;
-            this.soundShot2.play();
-            this.soundShot2.muted=false;
-            this.soundShot2.loop=false;
+        var sound = this.resMng.getSound("shot2");
+                sound.play(false);
       }
       if(model.eventSystem.shot3fired){
-               this.soundShot3.load();
-               //this.soundShot3.currentTime=0;
-               this.soundShot3.play();
-               this.soundShot3.muted=false;
-               this.soundShot3.loop=false;
+        var sound = this.resMng.getSound("shot3");
+                sound.play(false);
       }
       if(model.eventSystem.enemydied){
-            this.soundEnemyDie1.load();
-            //this.soundEnemyDie1.currentTime=0;
-            this.soundEnemyDie1.play();
-            this.soundEnemyDie1.muted=false;
-            this.soundEnemyDie1.loop=false;
+        var sound = this.resMng.getSound("enemydie1");
+                sound.play(false);
       }
       if(model.eventSystem.powerupcollected){
-            this.soundPowerup1.load();
-            // this.soundPowerup1.currentTime=0;
-            this.soundPowerup1.play();
-            this.soundPowerup1.muted=false;
-            this.soundPowerup1.loop=false;
+        var sound = this.resMng.getSound("powerup1");
+                sound.play(false);
       }
-      if(this.audio.currentTime>=59.8){
-            this.audio.load();
-            this.audio.play();
-            this.audio.muted=false;
-      }
+
     }
         
          

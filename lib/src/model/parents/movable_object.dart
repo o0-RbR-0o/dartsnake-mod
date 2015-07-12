@@ -57,6 +57,8 @@ abstract class Movable_Object{
        this._position_x++;
      }
    }
+   
+   
   
   //Moves the Movable_Object right 1px;
   void moveright(){

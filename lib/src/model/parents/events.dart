@@ -11,6 +11,7 @@ class EventSystem{
   bool shot2fired=false;
   bool shot3fired=false;
   bool startmusic=false;
+  bool derhatdochan=false;
   EventSystem();
   
   resetevents(){
@@ -22,5 +23,6 @@ class EventSystem{
     this.shot2fired=false;
     this.shot3fired=false;
     this.startmusic=false;
+    this.derhatdochan=false;
   }
 }

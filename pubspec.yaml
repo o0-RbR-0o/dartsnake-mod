@@ -2,4 +2,5 @@ name: raumffisch
 description: Dockerized Raumffisch.
 dependencies:
   browser: any
+  stagexl: any
   start: any

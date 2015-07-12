@@ -20,7 +20,7 @@ class Ffisch extends Movable_Object{
   
   //Adds "anzahl" lifes to the Ffisch
   void addlifes(int anzahl){
-    this._lifes+=anzahl;
+    this._lifes=this._lifes+anzahl<=5?this._lifes+anzahl:5;
   }
   
   //Removes "anzahl" lifes from the Ffisch
