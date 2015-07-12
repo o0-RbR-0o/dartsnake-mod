@@ -14,9 +14,10 @@ class Enemy extends Movable_Object with Damage_taker{
   int _sizex = 8;
   int _sizey = 4;
   int _life = 7;
-  Enemy(_game) : super(_game){
+  int _speed =1;
+  Enemy(_game, int speed) : super(_game){
     unitname = "enemykraken";
-   
+    speed>0?this._speed=speed:1;
   }
   
   void die(){

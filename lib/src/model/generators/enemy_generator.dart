@@ -16,7 +16,8 @@ class EnemyGenerator extends Generator {
     
 
     enemies.forEach((e){
-      e.moveleft(); 
+      for(int i=0;i<e._speed;i++)
+        e.moveleft();
       if(e.detectCollisonWith(game.ffisch)){
          e.dead = true;
         game.ffisch.removelifes(1);
@@ -55,7 +56,7 @@ class EnemyGenerator extends Generator {
       };
       
      if(!founddead){
-        Enemy enemy = new Enemy(game);
+        Enemy enemy = new Enemy(game,_random.nextInt(3));
         enemy.setposition(gamesize-enemy._sizex,_random.nextInt(gamesize-enemy._sizey));
         enemies.add(enemy);
       }
