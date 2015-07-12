@@ -85,7 +85,7 @@ class GameView {
     
     if(sound_on){
       if(model.eventSystem.startmusic){     
-                        stxl.AudioElementSound.load("audio/rbr_gamemusic1.ogg").then((stxl.Sound sound)=>sound.play(true));
+                        stxl.AudioElementSound.load("audio/rbr_gamemusic1.ogg").then((stxl.Sound sound){sound.play(true,new stxl.SoundTransform(0.5));});
       }
       if(model.eventSystem.shotfired){
         var sound = this.resMng.getSound("shot1");
